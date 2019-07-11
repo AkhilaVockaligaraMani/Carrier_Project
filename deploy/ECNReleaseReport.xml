@@ -1,0 +1,1030 @@
+<report xmlns="http://developer.cognos.com/schemas/report/11.0/" expressionLocale="en-us"><!--!RSU_SPC_INFO_UPGRADE_PERFORMED! !4! !http://developer.cognos.com/schemas/report/11.0/! !3! !1! !3! !http://developer.cognos.com/schemas/report/6.0/! !8! !2015!--><!--!RSU_SPC_INFO_UPGRADE_PERFORMED! !http://developer.cognos.com/schemas/report/3.0/! !http://developer.cognos.com/schemas/report/6.0/! !2012! !3! !8! !11! !33! !20!--><!--RS:8.2-->
+	<modelPath>/content/package[@name=&apos;Windchill&apos;]/model[@name=&apos;2016-03-09T06:45:04.746Z&apos;]</modelPath>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1" refQuery="Query1">
+					<pageBody>
+						<contents>
+						
+						<block>
+								<contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="Error"/></dataSource></textItem></contents><style><CSS value="font-family:&apos;Arial Black&apos;;font-weight:bold;color:blue;vertical-align:middle;text-align:center"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table><table repeatOnPageBreak="false"><tableRows><tableRow><tableCells><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell><contents>
+																				
+																				<image>
+																							<dataSource>
+																								
+																							<dataItemValue refDataItem="CarrierLogo"/></dataSource>
+																						</image></contents><style><CSS value="width:25%;border:1pt solid black"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>ECN Number</staticValue></dataSource><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;color:black"/></style></textItem></contents><style><CSS value="width:25%;font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><staticValue>ECN State</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="padding-right:4px;padding-left:4px;width:25%;font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><staticValue>ECR Number(s)</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="padding-right:4px;padding-left:4px;width:25%;font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents>
+																											
+																											
+																											
+																										<hyperlink>
+																													<dataSource>
+																														<dataItemValue refDataItem="ecnURL"/></dataSource>
+																													<contents>
+																														<textItem>
+																															<dataSource>
+																																<dataItemValue refDataItem="number"/></dataSource>
+																														</textItem>
+																													</contents>
+																												<style><CSS value="padding-right:4px;padding-left:4px;color:blue"/><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents><style><CSS value="vertical-align:middle;text-align:center;width:25%;border:1pt solid black"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="vertical-align:middle;text-align:center;width:25%;border:1pt solid black"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell><tableCell><contents>
+																											
+																										
+																										<hyperlink>
+																													<dataSource>
+																														<dataItemValue refDataItem="ECRNuumnolink"/></dataSource>
+																													<contents>
+																														
+																													<textItem>
+																															<dataSource>
+																																<dataItemValue refDataItem="associatedECRNumber"/></dataSource>
+																														</textItem></contents>
+																												<style><CSS value="padding-right:4px;padding-left:4px;color:blue"/><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents><style><CSS value="vertical-align:middle;text-align:center;width:25%;border:1pt solid black"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Creation Date</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="width:25%;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="thePersistInfo.createStamp"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:2px;text-align:left;vertical-align:middle;width:25%;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><staticValue>CA III Signature</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="width:25%;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="CAIIIFullName"/></dataSource><style><CSS value="color:black"/></style></textItem><textItem><dataSource><staticValue> </staticValue></dataSource></textItem><textItem><dataSource><dataItemValue refDataItem="CAIIIDate"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:2px;width:25%;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Release Date</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="width:25%;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="ecnReleaseDate"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:2px;text-align:justify;vertical-align:middle;width:25%;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><staticValue>CA IV Signature </staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="width:25%;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="CAIVFullName"/></dataSource><style><CSS value="color:black"/></style></textItem><textItem><dataSource><staticValue> </staticValue></dataSource></textItem><textItem><dataSource><dataItemValue refDataItem="CAIVDate"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:2px;width:25%;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Resolve Date</staticValue></dataSource><style><CSS value="font-weight:bold;color:black"/></style></textItem></contents><style><CSS value="width:25%;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="resolutionDate"/></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:2px;text-align:justify;vertical-align:middle;width:25%;border:0.25pt solid black"/></style></tableCell><tableCell><contents/><style><CSS value="display:none"/></style></tableCell><tableCell><contents/><style><CSS value="display:none;border:1pt solid black"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents><style><CSS value="width:100%"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents>
+															<table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>DISP-CODES:A=USE  B=REWORK C=SCRAP D=OTHER/EXPLAIN E=USE ON OTHER SPECIFIED UNITS</staticValue></dataSource><style><CSS value="color:black"/></style></textItem></contents><style><CSS value="padding:4px 10px 4px 10px;border:1pt solid black"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents>
+															<table><tableRows><tableRow><tableCells><tableCell><contents><HTMLItem description="Resulting Objects Information">
+																							<dataSource>
+																								<staticValue>List of Resulting Items at various lifecycle states.  &lt;b&gt;Note&lt;/b&gt;: When a number cell is highlighted in &lt;b&gt;&lt;font color=&quot;black&quot; style=&quot;BACKGROUND-COLOR:yellow&quot; &gt;Yellow&lt;/font&gt;&lt;/b&gt;, there is a previous version of the object that is not released and an investigation is necessary prior to release of this ECN.</staticValue>
+																							</dataSource>
+																						</HTMLItem></contents><style><CSS value="padding:4px 10px 4px 10px;border:1pt solid black"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table>
+									
+									
+									
+									<conditionalBlocks>
+												<conditionalBlockDefault>
+													<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_obs()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_obs&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_OPT()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_OPT&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_obs&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_obs&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!1" refQuery="Query2" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem>
+																<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem>
+															</contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+																	<dataSource>
+																		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+																	<contents>
+																		<textItem maxCharacters="20">
+																			<dataSource>
+																				<dataItemValue refDataItem="number"/></dataSource>
+																		<style><CSS value="color:blue"/></style></textItem>
+																	</contents>
+																<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink>
+															</contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><conditionalStyles><conditionalStyleCases refVariable="Boolean1"><conditionalStyle refVariableValue="1"/></conditionalStyleCases><conditionalStyleDefault/></conditionalStyles></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="versionInfo.identifier.versionId"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="itemDisp"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="source"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:1%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="19"><dataSource><dataItemValue refDataItem="partQualifier"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;width:1%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="8"><dataSource><dataItemValue refDataItem="uom"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="22"><dataSource><dataItemValue refDataItem="drwNumber"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="drwRev"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="13"><contents><textItem><dataSource><staticValue>OBSOLETE PARTS REPORT</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="text-align:center;font-weight:normal;text-decoration:underline;background-color:#B2CCE5;color:black"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_obs();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_OPT&apos; onclick=&apos;javascript:selectAll_OPT();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Disp</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>SC</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Qualifier</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>UOM</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Drawing Number</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:normal;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><sortList><sortItem refDataItem="number"/></sortList><propertyList><propertyItem refDataItem="previousVersionUnreleased"/></propertyList></list></contents>
+												<style><CSS value="overflow:scroll;width:100%"/></style></conditionalBlockDefault>
+												<conditionalBlockCases refVariable="HideObsolete"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks><conditionalBlocks>
+										<conditionalBlockDefault>
+											<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_new()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_New&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_NEW()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_NEW&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_New&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_New&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!2" refQuery="Query3" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem>
+																<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem>
+															</contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;white-space:nowrap;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+	<dataSource>
+		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+	<contents>
+		<textItem maxCharacters="20">
+			<dataSource>
+				<dataItemValue refDataItem="number"/></dataSource>
+		<style><CSS value="color:blue"/></style></textItem>
+	</contents>
+<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents><conditionalStyles><conditionalStyleCases refVariable="Boolean2"><conditionalStyle refVariableValue="1"><CSS value="background-color:yellow"/></conditionalStyle></conditionalStyleCases><conditionalStyleDefault/></conditionalStyles><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="versionInfo.identifier.versionId"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="source"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="19"><dataSource><dataItemValue refDataItem="partQualifier"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="8"><dataSource><dataItemValue refDataItem="uom"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="22"><dataSource><dataItemValue refDataItem="drwNumber"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="drwRev"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="12"><contents><textItem><dataSource><staticValue>NEW PARTS REPORT</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="text-align:center;font-weight:normal;text-decoration:underline;background-color:#B2CCE5;color:black"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_new();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_NEW&apos; onclick=&apos;javascript:selectAll_NEW();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="text-align:center;background-color:#B2CCE5"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>SC</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Qualifier</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>UOM</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Drawing Number</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><sortList><sortItem refDataItem="number"/></sortList><propertyList><propertyItem refDataItem="previousVersionUnreleased1"/><propertyItem refDataItem="representationObid"/></propertyList></list></contents>
+											<style><CSS value="width:100%;overflow:scroll"/></style></conditionalBlockDefault>
+										<conditionalBlockCases refVariable="HideNewParts"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks><conditionalBlocks>
+										<conditionalBlockDefault>
+											<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_rp()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_RP&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_RP()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_RP&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_RP&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_RP&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!3" refQuery="Query4" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;white-space:nowrap;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem>
+															</contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><!--!RSU_SPC_LIST_COLUMN_ROW_SPAN_NOT_GROUPED! !pvIconURL!&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;listColumnRowSpan xmlns=&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;http://developer.cognos.com/schemas/report/4.0/&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot; refDataItem=&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;pvIconURL&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;/&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;--><XMLAttributes><XMLAttribute name="RS_upgradeMessageIndex" value="1"/></XMLAttributes></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+																	<dataSource>
+																		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+																	<contents>
+																		<textItem maxCharacters="20">
+																			<dataSource>
+																				<dataItemValue refDataItem="number"/></dataSource>
+																		<style><CSS value="color:blue"/></style></textItem>
+																	</contents>
+																<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink>
+															</contents><conditionalStyles><conditionalStyleCases refVariable="Boolean3"><conditionalStyle refVariableValue="1"><CSS value="background-color:yellow"/></conditionalStyle></conditionalStyleCases><conditionalStyleDefault/></conditionalStyles><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="versionInfo.identifier.versionId"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="itemDisp"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="source"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="19"><dataSource><dataItemValue refDataItem="partQualifier"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="8"><dataSource><dataItemValue refDataItem="uom"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="22"><dataSource><dataItemValue refDataItem="drwNumber"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="2"><dataSource><dataItemValue refDataItem="drwRev"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="13"><contents><textItem><dataSource><staticValue>REVISED PARTS REPORT</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:normal;text-decoration:underline;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_rp();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_RP&apos; onclick=&apos;javascript:selectAll_RP();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Disp</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>SC</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Part Qualifier</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>UOM</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Drawing Number</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><propertyList><propertyItem refDataItem="previousVersionUnreleased2"/></propertyList><sortList><sortItem refDataItem="number"/></sortList></list></contents>
+											<style><CSS value="width:100%;overflow:scroll"/></style></conditionalBlockDefault>
+										<conditionalBlockCases refVariable="HideRevisedParts"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks><conditionalBlocks>
+										<conditionalBlockDefault>
+											<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_rd()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_RD&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_RD()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_RD&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_RD&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_RD&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!4" refQuery="Query5" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem>
+																<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem>
+															</contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+	<dataSource>
+		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+	<contents>
+		<textItem maxCharacters="22">
+			<dataSource>
+				<dataItemValue refDataItem="number"/></dataSource>
+		<style><CSS value="color:blue"/></style></textItem>
+	</contents>
+<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents><conditionalStyles><conditionalStyleCases refVariable="Boolean4"><conditionalStyle refVariableValue="1"><CSS value="background-color:yellow"/></conditionalStyle></conditionalStyleCases><conditionalStyleDefault/></conditionalStyles><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="22"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:1%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="6"><contents><textItem><dataSource><staticValue>REVISED DRAWINGS</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-decoration:underline;text-align:center;background-color:#B2CCE5;color:black;font-style:normal"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_rd();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_RD&apos; onclick=&apos;javascript:selectAll_RD();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><sortList><sortItem refDataItem="number"/></sortList><propertyList><propertyItem refDataItem="previousVersionUnreleased3"/></propertyList></list></contents>
+											<style><CSS value="width:100%;overflow:scroll"/></style></conditionalBlockDefault>
+										<conditionalBlockCases refVariable="HideRevisiedDrawings"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks>
+
+<!--****************************ESR 41652 ***********************************************-->
+										
+										<!--********************************END*************************************************-->
+										
+
+
+
+
+<conditionalBlocks>
+										<conditionalBlockDefault>
+											<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_cad()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_CAD&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_CAD()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_CAD&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_CAD&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_CAD&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!6" refQuery="Query7" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem>
+																<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem>
+															</contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+	<dataSource>
+		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+	<contents>
+		<textItem maxCharacters="22">
+			<dataSource>
+				<dataItemValue refDataItem="number"/></dataSource>
+		<style><CSS value="color:blue"/></style></textItem>
+	</contents>
+<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><conditionalStyles><conditionalStyleCases refVariable="Boolean5"><conditionalStyle refVariableValue="1"/></conditionalStyleCases><conditionalStyleDefault/></conditionalStyles></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="22"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:1%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="6"><contents><textItem><dataSource><staticValue>CAD MODELS</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:normal;text-decoration:underline;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_cad();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_CAD&apos; onclick=&apos;javascript:selectAll_CAD();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><sortList><sortItem refDataItem="number"/></sortList><propertyList><propertyItem refDataItem="previousVersionUnreleased4"/></propertyList></list></contents>
+											<style><CSS value="width:100%;overflow:scroll"/></style></conditionalBlockDefault>
+										<conditionalBlockCases refVariable="HideCADModel"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks><conditionalBlocks>
+										<conditionalBlockDefault>
+											<contents><HTMLItem>
+								<dataSource>
+									<staticValue>&lt;script language=&apos;javascript&apos;&gt;
+function checkAllOids_bom()
+{
+
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+zipOptValue=&apos;false&apos;;
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype &amp;&amp; &apos;chkoid_Bom&apos;==elename)
+  {	
+	if (currentelem.checked)
+	{    if (value!= &apos;&apos; &amp;&amp; currentelem.value!=&apos;on&apos;)
+	         value=value+&apos;*&apos;+currentelem.value;
+ 	     else
+	        value=currentelem.value;     	
+	}	    
+  }
+}
+
+//open in a new window(pass the above value in querystring)
+if(value == &apos;on&apos;)
+{
+ alert(&apos;NO DATA FOUND&apos;);
+}
+else if (value!= &apos;&apos;)
+{
+        //alert(&apos; CHECKED VALUE $$ &apos;+value);
+	window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/downloadViewable.jsp?objectOID=&apos;+value+&apos;&amp;&apos;+&apos;zipOption=&apos;+zipOptValue);
+	//Not using below technique due to overhead of registering servlet in web.xml
+	//window.open(&apos;/Windchill/servlet/CognosServlet?objectOID=&apos;+value);
+}
+else if(value == &apos;&apos;)
+{
+   alert(&apos;Select any object(s)&apos;);
+}
+
+}
+
+function selectAll_Bom()
+{
+currform=document.forms[0];
+maxlength= currform.elements.length;
+value=&apos;&apos;;
+checkAll = false;
+
+for (i=0; i&lt; maxlength; i++)
+{
+  currentelem=currform.elements[i];
+  elementtype=currentelem.type;	
+  elename=currentelem.name;
+
+  if (&apos;checkbox&apos;== elementtype)
+  {
+	if (currentelem.name==&apos;chkSelectAll_Bom&apos;)
+	{    
+ 	   if (currentelem.checked)
+		checkAll=true;
+	}
+	
+        if (checkAll &amp;&amp; &apos;chkoid_Bom&apos;==elename)
+       		currentelem.checked=true;
+	else if (checkAll &amp;&amp; &apos;zipOpt_Bom&apos;==elename)
+       		currentelem.checked=true;
+	else if(!checkAll)
+		currentelem.checked=false;
+
+  }
+}
+}
+function callPViewPage(objID)
+{
+
+currform=document.forms[0];
+window.open(&apos;/Windchill/netmarkets/jsp/ext/carrier/wc/cognos/report/openPDF.jsp?objectOID=&apos;+objID);
+
+}	
+&lt;/script&gt;</staticValue>
+								</dataSource>
+							</HTMLItem><list name="!RSU_NM_list!5" refQuery="Query6" rowsPerPage="99999" showColumnTitles="hide">
+																	<style>
+																		<CSS value="border-collapse:collapse;width:100%"/>
+																	<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																	<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="zipOption"/></dataSource>
+																</HTMLItem><HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="formatedObid"/></dataSource>
+																</HTMLItem>
+															</contents><listColumnRowSpan refDataItem="zipOption"/><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+																				<image>
+																	<dataSource>
+																		<dataItemValue refDataItem="objectIconURL"/></dataSource>
+																</image>
+															</contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="objectIconURL"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>HTML Item</staticValue></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+															<HTMLItem>
+																	<dataSource>
+																		<dataItemValue refDataItem="pvIconURL"/></dataSource>
+																</HTMLItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="pvIconURL"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="number"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+																	<dataSource>
+																		<dataItemValue refDataItem="resultingObjectURL"/></dataSource>
+																	<contents>
+																		<textItem maxCharacters="20">
+																			<dataSource>
+																				<dataItemValue refDataItem="number"/></dataSource>
+																		<style><CSS value="color:blue"/></style></textItem>
+																	</contents>
+																<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink>
+															</contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="number"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;padding-right:4px;padding-left:4px;width:5%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="versionInfo.identifier.versionId"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:center;padding-right:4px;padding-left:4px;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="versionInfo.identifier.versionId"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents/><style><CSS value="font-weight:bold;text-align:left;padding-right:4px;padding-left:4px;width:15%"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="vertical-align:middle;text-align:left;padding-right:4px;padding-left:4px;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="name"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="state.state1"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="state.state1"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="ASSYDISP"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="3"><dataSource><dataItemValue refDataItem="ASSYDISP"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><listColumnRowSpan refDataItem="ASSYDISP"/></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="COMPDISP"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="3"><dataSource><dataItemValue refDataItem="COMPDISP"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;white-space:nowrap;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="ITEMNO"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="4"><dataSource><dataItemValue refDataItem="ITEMNO"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="COMPONENTNUMBER"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="COMPONENTNUMBER"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="QTY"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="6"><dataSource><dataItemValue refDataItem="QTY"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="UNIT"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="8"><dataSource><dataItemValue refDataItem="UNIT"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="CHILDSOURCE"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="1"><dataSource><dataItemValue refDataItem="CHILDSOURCE"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="COMPONENTNAME"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="20"><dataSource><dataItemValue refDataItem="COMPONENTNAME"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="STATUS"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="3"><dataSource><dataItemValue refDataItem="STATUS"/></dataSource></textItem></contents><style><CSS value="text-align:center;vertical-align:middle;white-space:nowrap;width:0.5%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="INFOWAS"/></dataSource></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem maxCharacters="8"><dataSource><dataItemValue refDataItem="INFOWAS"/></dataSource></textItem></contents><style><CSS value="text-align:left;vertical-align:middle;white-space:nowrap;width:1%;color:black"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><dataItemLabel refDataItem="PARENTPARTOBID"/></dataSource><style><CSS value="display:none"/></style></textItem></contents><style><CSS value="display:none"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="PARENTPARTOBID"/></dataSource><style><CSS value="display:none"/></style></textItem></contents><!--!RSU_SPC_LIST_COLUMN_ROW_SPAN_NOT_GROUPED! !PARENTPARTOBID!&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;listColumnRowSpan xmlns=&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;http://developer.cognos.com/schemas/report/4.0/&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot; refDataItem=&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;PARENTPARTOBID&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;quot;/&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;--><style><CSS value="display:none"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style><XMLAttributes><XMLAttribute name="RS_upgradeMessageIndex" value="2"/></XMLAttributes></listColumnBody><style><CSS value="display:none"/></style></listColumn></listColumns><listPageHeader><listRows><listRow><rowCells><rowCell colSpan="18"><contents><textItem><dataSource><staticValue>REVISED BOM REPORT</staticValue></dataSource><style><CSS value="font-size:10pt;font-weight:bold;text-decoration:underline"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:normal;text-decoration:underline;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell></rowCells></listRow><listRow><rowCells><rowCell><contents><HTMLItem>
+																						<dataSource>
+																							<staticValue>&lt;a href=&quot;#&quot; &gt;&lt;IMG SRC=&apos;/Windchill/wtcore/images/export.gif&apos; border=&quot;0&quot; onclick=&apos;javascript:checkAllOids_bom();&apos; title=&apos;Click here to download a zip file of the content/viewables.&apos; /&gt;&lt;/a&gt;
+
+&lt;br&gt;
+&lt;input type=&apos;checkbox&apos; name=&apos;chkSelectAll_Bom&apos; onclick=&apos;javascript:selectAll_Bom();&apos;/&gt;</staticValue>
+																						</dataSource>
+																					</HTMLItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Type</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Viewable</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Parent Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>REV</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Parent Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;white-space:nowrap;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Assy Disp</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Comp Disp</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Item No</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Component Number</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Qty</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>UOM</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>SC</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Component Name</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Status</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/></style></rowCell><rowCell><contents><textItem><dataSource><staticValue>Info Was</staticValue></dataSource><style><CSS value="font-weight:bold"/></style></textItem></contents><style><CSS value="white-space:nowrap;font-weight:bold;text-align:center;background-color:#B2CCE5;color:black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell><rowCell><contents/><style><CSS value="display:none"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></rowCell></rowCells></listRow></listRows></listPageHeader><listGroups><listGroup refDataItem="number"/><listGroup refDataItem="resultingObjectURL"><sortList><sortItem refDataItem="number"/></sortList></listGroup><listGroup refDataItem="zipOption"/><listGroup refDataItem="objectIconURL"/><listGroup refDataItem="pvIconURL"/><listGroup refDataItem="versionInfo.identifier.versionId"/><listGroup refDataItem="ASSYDISP"/><listGroup refDataItem="name"/><listGroup refDataItem="state.state1"/></listGroups><sortList><sortItem refDataItem="ITEMNO"/><sortItem refDataItem="STATUS" sortOrder="descending"/></sortList></list></contents>
+											<style><CSS value="width:100%;overflow:scroll"/></style></conditionalBlockDefault>
+										<conditionalBlockCases refVariable="HideBOM"><conditionalBlock refVariableValue="1"><contents/></conditionalBlock></conditionalBlockCases></conditionalBlocks></contents>
+								<style><CSS value="width:100%;border:1.5pt solid black"/></style></block>
+						
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="pb"/></defaultStyles></style></pageBody>
+				<pageHeader>
+						<contents>
+							
+						<table><style><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles><CSS value="border-collapse:collapse;width:100%"/></style><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>ECN Release Report - </staticValue></dataSource><style><CSS value="font-weight:bold;padding-left:335px;font-size:14pt;color:black;text-decoration:underline;padding-bottom:6px;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="tt"/></defaultStyles></style></textItem><hyperlink>
+																													<dataSource>
+																														<dataItemValue refDataItem="ecnURL"/></dataSource>
+																													<contents>
+																														<textItem>
+																															<dataSource>
+																																<dataItemValue refDataItem="number"/></dataSource>
+																														</textItem>
+																													</contents>
+																												<style><CSS value="padding-right:2px;padding-left:4px;color:blue;font-size:14pt;font-weight:bold;text-decoration:underline"/><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink></contents></tableCell></tableCells></tableRow></tableRows></table></contents>
+						<style>
+							<CSS value="padding-bottom:10px"/>
+						<defaultStyles><defaultStyle refStyle="ph"/></defaultStyles></style>
+					</pageHeader><pageFooter>
+						<contents>
+							<table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>THIS DOCUMENT IS THE PROPERTY OF CARRIER CORPORATION AND IS DELIVERED UPON THE EXPRESS CONDITION THAT THE CONTENTS WILL NOT BE DISCLOSED OR USED WITHOUT CARRIER CORPORATION WRITTEN CONSENT</staticValue></dataSource></textItem></contents><style><CSS value="text-align:center"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table><table>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<reportExpression>AsOfDate()</reportExpression>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="vertical-align:top;text-align:left;width:5%"/>
+												</style>
+											</tableCell>
+											
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<reportExpression>AsOfTime()</reportExpression>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="vertical-align:top;text-align:right;width:5%"/>
+												</style>
+											</tableCell>
+										</tableCells>
+									</tableRow>
+								</tableRows>
+								<style>
+									<CSS value="border-collapse:collapse;width:100%"/>
+								<defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+							</table>
+						</contents>
+						<style>
+							<CSS value="padding-top:10px"/>
+						<defaultStyles><defaultStyle refStyle="pf"/></defaultStyles></style>
+					</pageFooter><style><CSS value="width:100%"/><defaultStyles><defaultStyle refStyle="pg"/></defaultStyles></style></page>
+			</reportPages>
+		<pageSetup orientation="landscape"/></layout>
+	</layouts>
+<queries><query name="Query1"><source><model/></source><selection autoSummary="false"><dataItem name="totalObjects"><expression>count([Query2].[number])</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[state.state]</expression></dataItem><dataItem aggregate="none" name="thePersistInfo.createStamp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[thePersistInfo.createStamp]</expression></dataItem><dataItem aggregate="none" name="resolutionDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[resolutionDate]</expression></dataItem><dataItem aggregate="none" name="ecnReleaseDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[ecnReleaseDate]</expression></dataItem><dataItem aggregate="none" name="ecnURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[ecnURL]</expression></dataItem><dataItem aggregate="none" name="CarrierLogo"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[CarrierLogo]</expression></dataItem><dataItem aggregate="none" name="CAIIIFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[CAIIIFullName]</expression></dataItem><dataItem aggregate="none" name="CAIIIDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[CAIIIDate]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[number]</expression></dataItem><dataItem aggregate="none" name="CAIVFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[CAIVFullName]</expression></dataItem><dataItem aggregate="none" name="CAIVDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[CAIVDate]</expression></dataItem><dataItem aggregate="none" name="associatedECRNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[associatedECRNumber]</expression></dataItem><dataItem aggregate="none" name="ECRNuumnolink"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[ECRNuumnolink]</expression></dataItem><dataItem aggregate="none" name="Error"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN_Release].[Error]</expression></dataItem></selection></query><query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[formatedObid] || &apos;&quot; name=&quot;chkoid_obs&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[number]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[state.state]</expression></dataItem><dataItem aggregate="none" name="uom"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[uom]</expression></dataItem><dataItem aggregate="none" name="versionInfo.identifier.versionId"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[versionInfo.identifier.versionId]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="itemDisp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[drwRev]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[zipOption] || &apos;&quot; name=&quot;zipOpt_obs&quot; id=&quot;zipOpt_obs&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="CHILDOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[CHILDOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_Obsolete].[INFOWAS]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[ObsoleteReportName]=&apos;Yes&apos;</filterExpression></detailFilter></detailFilters></query>
+	
+	<query name="Query3">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased1"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[formatedObid] || &apos;&quot; name=&quot;chkoid_New&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[number]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[state.state]</expression></dataItem><dataItem aggregate="none" name="uom"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[uom]</expression></dataItem><dataItem aggregate="none" name="versionInfo.identifier.versionId"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[versionInfo.identifier.versionId]</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="itemDisp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[drwRev]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[zipOption] || &apos;&quot; name=&quot;zipOpt_New&quot; id=&quot;zipOpt_New&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="CHILDOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[CHILDOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_NewPart].[INFOWAS]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[NewPartsReportName]=&apos;Yes&apos;</filterExpression></detailFilter></detailFilters></query><query name="Query4">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased2"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[formatedObid] || &apos;&quot; name=&quot;chkoid_RP&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;
+</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[number]</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[state.state]</expression></dataItem><dataItem aggregate="none" name="uom"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[uom]</expression></dataItem><dataItem aggregate="none" name="versionInfo.identifier.versionId"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[versionInfo.identifier.versionId]</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="itemDisp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[drwRev]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[zipOption] || &apos;&quot; name=&quot;zipOpt_RP&quot; id=&quot;zipOpt_RP&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="CHILDOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[CHILDOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevPart].[INFOWAS]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[RevisedPartsReportName]=&apos;Yes&apos;</filterExpression></detailFilter></detailFilters></query><query name="Query5">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased3"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[formatedObid] || &apos;&quot; name=&quot;chkoid_RD&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[number]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[state.state]</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="itemDisp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[drwRev]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[zipOption] || &apos;&quot; name=&quot;zipOpt_RD&quot; id=&quot;zipOpt_RD&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="CHILDOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[CHILDOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_RevDrw].[INFOWAS]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[DrawingsReportName]=&apos;Yes&apos; </filterExpression></detailFilter></detailFilters></query><query name="Query6">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[formatedObid] || &apos;&quot; name=&quot;chkoid_Bom&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[number]</expression></dataItem><dataItem aggregate="none" name="versionInfo.identifier.versionId"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[versionInfo.identifier.versionId]</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[drwRev]</expression></dataItem><dataItem aggregate="none" label="Assy Disp" name="ASSYDISP"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[itemDisp]</expression></dataItem><dataItem aggregate="none" label="Comp Disp" name="COMPDISP"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[zipOption] || &apos;&quot; name=&quot;zipOpt_Bom&quot; id=&quot;zipOpt_Bom&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[INFOWAS]</expression></dataItem><dataItem aggregate="none" name="state.state1"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[state.state]</expression></dataItem><dataItem aggregate="none" name="state.state" rollupAggregate="none"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_BOM].[state.state]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[BOMReportName]=&apos;Yes&apos;</filterExpression></detailFilter></detailFilters></query>
+
+		<!--*******************************************ESR 41652 BEGIN*************************-->
+		
+		<query name="Query7">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="previousVersionUnreleased4"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[previousVersionUnreleased]</expression></dataItem><dataItem aggregate="none" name="formatedObid"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[formatedObid] || &apos;&quot; name=&quot;chkoid_CAD&quot; /&gt;&apos; </expression></dataItem><dataItem aggregate="none" name="representationObid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[representationObid]</expression></dataItem><dataItem aggregate="none" name="objectIconURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[objectIconURL]</expression></dataItem><dataItem aggregate="none" name="pvIconURL"><expression>&apos;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;&apos; || [com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[pvIconURL] ||&apos;&quot; border=&quot;0&quot; title=&quot;Click here to open the viewable in PDF.&quot; onClick=&apos;&apos;javascript:callPViewPage(&quot;&apos;||[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[formatedObid]||&apos;&quot;)&apos;&apos; /&gt;&lt;/a&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="resultingObjectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[resultingObjectURL]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[name]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[number]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[state.state]</expression></dataItem><dataItem aggregate="none" name="docType"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[docType]</expression></dataItem><dataItem aggregate="none" name="partQualifier"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[partQualifier]</expression></dataItem><dataItem aggregate="none" name="itemDisp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[itemDisp]</expression></dataItem><dataItem aggregate="none" name="drwNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[drwNumber]</expression></dataItem><dataItem aggregate="none" name="drwRev"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[drwRev]</expression></dataItem><dataItem aggregate="none" name="source"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[source]</expression></dataItem><dataItem aggregate="none" name="zipOption"><expression>&apos;&lt;input type=&quot;checkbox&quot; value=&quot;&apos; ||
+[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[zipOption] || &apos;&quot; name=&quot;zipOpt_CAD&quot; id=&quot;zipOpt_CAD&quot; style=&quot;display:none;&quot; /&gt;&apos;</expression></dataItem><dataItem aggregate="none" name="ObsoleteReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[ObsoleteReportName]</expression></dataItem><dataItem aggregate="none" name="RevisedPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[RevisedPartsReportName]</expression></dataItem><dataItem aggregate="none" name="BOMReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[BOMReportName]</expression></dataItem><dataItem aggregate="none" name="NewPartsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[NewPartsReportName]</expression></dataItem><dataItem aggregate="none" name="DrawingsReportName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[DrawingsReportName]</expression></dataItem><dataItem aggregate="none" name="PARENTPARTOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[PARENTPARTOBID]</expression></dataItem><dataItem aggregate="none" name="CHILDOBID"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[CHILDOBID]</expression></dataItem><dataItem aggregate="none" name="ITEMNO"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[ITEMNO]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNUMBER"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[COMPONENTNUMBER]</expression></dataItem><dataItem aggregate="none" name="QTY"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[QTY]</expression></dataItem><dataItem aggregate="none" name="UNIT"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[UNIT]</expression></dataItem><dataItem aggregate="none" name="CHILDSOURCE"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[CHILDSOURCE]</expression></dataItem><dataItem aggregate="none" name="COMPONENTNAME"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[COMPONENTNAME]</expression></dataItem><dataItem aggregate="none" name="STATUS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[STATUS]</expression></dataItem><dataItem aggregate="none" name="INFOWAS"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECN__Release_Resulting_CADModel].[INFOWAS]</expression></dataItem></selection>
+		<detailFilters><detailFilter><filterExpression>[DrawingsReportName]=&apos;Yes&apos; </filterExpression></detailFilter></detailFilters></query>
+		<!--**********************************************ESR 41652 END*******************************-->
+		</queries><reportVariables>
+
+		
+	
+		
+	<reportVariable name="Boolean1" type="boolean">
+			<reportExpression>[Query2].[previousVersionUnreleased] = &apos;Yes&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable>
+		<reportVariable name="Boolean2" type="boolean">
+	<reportExpression>[Query3].[previousVersionUnreleased1] = &apos;Yes&apos;</reportExpression>
+	<variableValues>
+		<variableValue value="1"/>
+	</variableValues>
+</reportVariable><reportVariable name="Boolean3" type="boolean">
+	<reportExpression>[Query4].[previousVersionUnreleased2] = &apos;Yes&apos;</reportExpression>
+	<variableValues>
+		<variableValue value="1"/>
+	</variableValues>
+</reportVariable><reportVariable name="Boolean4" type="boolean">
+	<reportExpression>[Query5].[previousVersionUnreleased3] = &apos;Yes&apos;</reportExpression>
+	<variableValues>
+		<variableValue value="1"/>
+	</variableValues>
+</reportVariable><reportVariable name="Boolean5" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;Obsolete&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable>
+		
+<!--******************************ESR 41652 BEGIN *****************************-->
+		<reportVariable name="Boolean6" type="boolean">
+	<reportExpression>[Query7].[previousVersionUnreleased4] = &apos;Yes&apos;</reportExpression>
+	<variableValues>
+		<variableValue value="1"/>
+	</variableValues>
+</reportVariable>
+		<!-- ***********************ESR 41652 END *************************************-->	<reportVariable name="HideObsolete" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;Obsolete&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable><reportVariable name="HideNewParts" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;NewPart&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable><reportVariable name="HideRevisedParts" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;RevisedPart&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable><reportVariable name="HideRevisiedDrawings" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;RevisedDrawing&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable><reportVariable name="HideBOM" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;BOM&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable>
+<!--********************ESR 41652 Begin**************************-->
+		<reportVariable name="HideCADModel" type="boolean">
+			<reportExpression>ParamDisplayValue(&apos;CADModel&apos;)=&apos;false&apos;</reportExpression>
+			<variableValues>
+				<variableValue value="1"/>
+			</variableValues>
+		</reportVariable>
+		<!--********************END ESR 41652*******************************-->
+<reportVariable name="Error" type="string">
+			<reportExpression/>
+			<variableValues><variableValue value="NO ECN"/></variableValues></reportVariable>
+		<reportVariable name="Error1" type="string">
+			<reportExpression>[Query1].[Error]</reportExpression>
+			<variableValues><variableValue value="Error"/></variableValues></reportVariable>
+	</reportVariables><upgradeInfo><upgradeMessages><upgradeMessage messageId="1" type="warning">!RSU_SPC_WARNING_OLD! !!RSU_SPC_LIST_COLUMN_ROW_SPAN_NOT_GROUPED! !pvIconURL!!</upgradeMessage><upgradeMessage messageId="2" type="warning">!RSU_SPC_WARNING_OLD! !!RSU_SPC_LIST_COLUMN_ROW_SPAN_NOT_GROUPED! !PARENTPARTOBID!!</upgradeMessage><upgradeMessage messageId="3" type="info">!RSU_SPC_INFO_OLD! !!RSU_SPC_INFO_VALIDATE_REPORT!!</upgradeMessage><upgradeMessage messageId="4" type="info">!RSU_SPC_INFO_VALIDATE_REPORT!</upgradeMessage></upgradeMessages></upgradeInfo><XMLAttributes><XMLAttribute name="RS_upgradeMessageIndex" value="3"/><XMLAttribute name="RS_CreateExtendedDataItems" output="no" value="false"/><XMLAttribute name="listSeparator" output="no" value=","/><XMLAttribute name="RS_upgradeMessageIndex" value="1"/><XMLAttribute name="RS_upgradeMessageIndex" value="2"/><XMLAttribute name="RS_upgradeMessageIndex" value="3"/><XMLAttribute name="RS_upgradeMessageIndex" value="4"/><XMLAttribute name="RS_modelModificationTime" output="no" value="2016-03-09T06:45:04.981Z"/></XMLAttributes><reportName>ECN Release Report</reportName></report>
