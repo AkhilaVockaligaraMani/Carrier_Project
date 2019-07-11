@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE NmLoader SYSTEM "standardX10.dtd">
+
+<!-- Command: 
+windchill wt.load.LoadFromFile -d /apps/ptc/Windchill/loadFiles/ext/carrier/wc/acls/CECM_Grant_ModifyIdentity_Content.xml -u windchill.wcadmin@carrier.utc.com -p admin123 -CONT_PATH \"/wt.inf.container.OrgContainer=Carrier/wt.pdmlink.PDMLinkProduct=Commercial Engineering Change Processes\"
+-->
+
+<NmLoader>
+ 
+  <csvAccessRule handler="wt.load.LoadUser.createAccessRule">
+    <csvuser/>
+    <csvdomain>/Default</csvdomain>
+    <csvtypeId>WCTYPE|wt.change2.WTChangeOrder2|com.utc.carrier.projectlink.UTC.CECMECN</csvtypeId>
+    <csvpermission>+</csvpermission>
+    <csvprincipal>MEMBERS</csvprincipal>
+    <csvpermissionList>0/1/11/16</csvpermissionList>
+    <csvstate>ALL</csvstate>
+  </csvAccessRule>
+
+</NmLoader>
