@@ -1,0 +1,817 @@
+<report xmlns="http://developer.cognos.com/schemas/report/11.0/" expressionLocale="en" ignoreFilterContext="false"><!--!RSU_SPC_INFO_UPGRADE_PERFORMED! !6! !http://developer.cognos.com/schemas/report/11.0/! !14! !12! !11! !http://developer.cognos.com/schemas/report/6.0/! !17! !2015!--><!--!RSU_SPC_INFO_UPGRADE_PERFORMED! !http://developer.cognos.com/schemas/report/3.0/! !http://developer.cognos.com/schemas/report/6.0/! !2012! !3! !31! !22! !0! !42!--><!--RS:8.2-->
+	<modelPath>/content/package[@name='Windchill']/model[@name='2015-11-06T08:42:42.638Z']</modelPath>
+	<queries>
+		<query name="Query1">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="CarrierLogo"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CarrierLogo]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[name]</expression></dataItem><dataItem aggregate="none" name="theRequestPriority"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[theRequestPriority]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[state.state]</expression></dataItem><dataItem aggregate="none" name="thePersistInfo.updateStamp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[thePersistInfo.updateStamp]</expression></dataItem><dataItem aggregate="none" name="thePersistInfo.createStamp"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[thePersistInfo.createStamp]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[number]</expression></dataItem><dataItem aggregate="none" name="description"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[description]</expression></dataItem><dataItem aggregate="none" name="resolutionDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[resolutionDate]</expression></dataItem><dataItem aggregate="none" name="needDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[needDate]</expression></dataItem><dataItem aggregate="none" name="obid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[obid]</expression></dataItem><dataItem aggregate="none" name="containerName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[containerName]</expression></dataItem><dataItem aggregate="none" name="creatorName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[creatorName]</expression></dataItem><dataItem aggregate="none" name="theCategory"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[theCategory]</expression></dataItem><dataItem aggregate="none" name="associatedECNNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[associatedECNNumber]</expression></dataItem><dataItem aggregate="none" name="associatedECNName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[associatedECNName]</expression></dataItem><dataItem aggregate="none" name="proposedChange"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[proposedChange]</expression></dataItem><dataItem aggregate="none" name="affectedProductNumber"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[affectedProductNumber]</expression></dataItem><dataItem aggregate="none" name="affectedProductName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[affectedProductName]</expression></dataItem><dataItem aggregate="none" name="creatorFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[creatorFullName]</expression></dataItem><dataItem aggregate="none" name="modifierFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[modifierFullName]</expression></dataItem><dataItem aggregate="none" name="CAIFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CAIFullName]</expression></dataItem><dataItem aggregate="none" name="CAIVote"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CAIVote]</expression></dataItem><dataItem aggregate="none" name="CAIComments"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CAIComments]</expression></dataItem><dataItem aggregate="none" name="CAIDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CAIDate]</expression></dataItem><dataItem aggregate="none" name="caiiFullName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiFullName]</expression></dataItem><dataItem aggregate="none" name="caiiVote"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiVote]</expression></dataItem><dataItem aggregate="none" name="caiiComments"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiComments]</expression></dataItem><dataItem aggregate="none" name="caiiDate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiDate]</expression></dataItem><dataItem aggregate="none" name="CAIDate1"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CAIDate]</expression></dataItem><dataItem aggregate="none" name="caiiDate1"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiDate]</expression></dataItem><dataItem aggregate="none" name="caiiFullName1"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[caiiFullName]</expression></dataItem><dataItem aggregate="none" name="impact_on_current_inventory"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[impact_on_current_inventory]</expression></dataItem><dataItem aggregate="none" name="implementation_disposition"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[implementation_disposition]</expression></dataItem><dataItem aggregate="none" name="labor_time_estimate_engineering"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[labor_time_estimate_engineering]</expression></dataItem><dataItem aggregate="none" name="labor_time_estimate_manufacturing"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[labor_time_estimate_manufacturing]</expression></dataItem><dataItem aggregate="none" name="labor_time_estimate_other"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[labor_time_estimate_other]</expression></dataItem><dataItem aggregate="none" name="originating_site"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[originating_site]</expression></dataItem><dataItem aggregate="none" name="payback_time"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[payback_time]</expression></dataItem><dataItem aggregate="none" name="TSG_Affected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[TSG_Affected]</expression></dataItem><dataItem aggregate="none" name="pre_production_pilot_run_category"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[pre_production_pilot_run_category]</expression></dataItem><dataItem aggregate="none" name="Plants_Affected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[Plants_Affected]</expression></dataItem><dataItem aggregate="none" name="Reason_for_Change"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[Reason_for_Change]</expression></dataItem><dataItem aggregate="none" name="annualized_non_recurring_benefit_estimate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[annualized_non_recurring_benefit_estimate]</expression></dataItem><dataItem aggregate="none" name="annualized_non_recurring_cost_estimate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[annualized_non_recurring_cost_estimate]</expression></dataItem><dataItem aggregate="none" name="annualized_recurring_benefit_estimate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[annualized_recurring_benefit_estimate]</expression></dataItem><dataItem aggregate="none" name="annualized_recurring_cost_estimate"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[annualized_recurring_cost_estimate]</expression></dataItem><dataItem aggregate="none" name="crbVote"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[crbVote]</expression></dataItem><dataItem aggregate="none" name="crbComments"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[crbComments]</expression></dataItem><dataItem aggregate="none" name="asme_affected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[asme_affected]</expression></dataItem><dataItem aggregate="none" name="Eurovent_Affected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[Eurovent_Affected]</expression></dataItem><dataItem aggregate="none" name="flammability_analysis_required"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[flammability_analysis_required]</expression></dataItem><dataItem aggregate="none" name="localLanguageDescription"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[localLanguageDescription]</expression></dataItem><dataItem aggregate="none" name="materials_of_concern_analysis_required"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[materials_of_concern_analysis_required]</expression></dataItem><dataItem aggregate="none" name="ped_affected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[ped_affected]</expression></dataItem><dataItem aggregate="none" name="preproduction_run_required"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[preproduction_run_required]</expression></dataItem><dataItem aggregate="none" name="Supplier_Product_Application_Review_Required"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[Supplier_Product_Application_Review_Required]</expression></dataItem><dataItem aggregate="none" name="crbSigs"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[crbSigs]</expression></dataItem></selection>
+		</query>
+	<query name="Query2">
+			<source>
+				<model/>
+			</source>
+			<selection autoSummary="false"><dataItem aggregate="none" name="fileName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Attachments_Query].[fileName]</expression></dataItem><dataItem aggregate="none" name="attachmentURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Attachments_Query].[attachmentURL]</expression></dataItem><dataItem name="number" aggregate="none" rollupAggregate="none"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Attachments_Query].[number]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="unknown" output="no"/></XMLAttributes></dataItem></selection>
+		</query>
+	<query name="Query3"><source><model/></source><selection autoSummary="false"><dataItem aggregate="none" name="obid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[obid]</expression></dataItem><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[number]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[name]</expression></dataItem><dataItem aggregate="none" name="versionInfo.identifier.versionId"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[versionInfo.identifier.versionId]</expression></dataItem><dataItem aggregate="none" name="objectURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[objectURL]</expression></dataItem><dataItem name="AffectNumber" aggregate="none" rollupAggregate="none"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[ECR_Affected_Objects_Query].[AffectNumber]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="unknown" output="no"/></XMLAttributes></dataItem></selection></query><query name="Query4"><source><model/></source><selection><dataItem name="CarrierLogo" aggregate="none"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[BSS_ECR_Report].[CarrierLogo]</expression><XMLAttributes><XMLAttribute name="RS_dataType" value="3" output="no"/><XMLAttribute name="RS_dataUsage" value="unknown" output="no"/></XMLAttributes></dataItem></selection></query></queries>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1">
+					<pageBody>
+						<contents>
+							<repeaterTable across="1" down="1" name="!RSU_NM_repeaterTable!1" refQuery="Query1">
+								<style>
+									<CSS value="border-collapse:collapse"/>
+								<defaultStyles><defaultStyle refStyle="rt"/></defaultStyles></style>
+								<repeaterTableCell>
+									<contents><table><tableRows><tableRow><tableCells><tableCell><contents><table>
+                                  <tableRows>
+                                    <tableRow>
+                                      <tableCells>
+                                        <tableCell>
+                                          <contents>
+                                            
+                                          
+																					
+																					<repeater name="Repeater1" refQuery="Query4">
+			<contents><image>
+																							<dataSource>
+																								<dataItemValue refDataItem="CarrierLogo"/></dataSource>
+																						</image></contents>
+		</repeater></contents>
+                                          <style>
+                                            <CSS value="width:20%"/>
+                                          </style>
+                                        </tableCell>
+                                        <tableCell>
+                                          <contents>
+                                            <textItem>
+                                                          <dataSource>
+                                                            <staticValue>BSS Enterprise Change Request</staticValue>
+                                                          </dataSource>
+                                                        <style><defaultStyles><defaultStyle refStyle="ct"/></defaultStyles><CSS value="background-color:white"/></style></textItem>
+                                          </contents>
+                                        <style><CSS value="vertical-align:middle;text-align:center;font-weight:bold"/></style></tableCell>
+                                        <tableCell>
+                                          <contents>
+                                            <table>
+                                              <tableRows>
+                                                <tableRow>
+                                                  <tableCells>
+                                                    <tableCell>
+                                                      <contents>
+                                                        <textItem>
+                                                          <dataSource>
+                                                            <staticValue>ECR Number:</staticValue>
+                                                          </dataSource>
+                                                        <style><CSS value="font-weight:bold"/></style></textItem>
+                                                      </contents>
+                                                      <style>
+                                                        <CSS value="width:50%;white-space:nowrap;font-weight:bold"/>
+                                                      </style>
+                                                    </tableCell>
+                                                    <tableCell>
+                                                      <contents>
+                                                        
+                                                      <textItem><dataSource><dataItemValue refDataItem="number"/></dataSource></textItem></contents>
+                                                    </tableCell>
+                                                  </tableCells>
+                                                </tableRow>
+                                                
+                                                <tableRow>
+                                                  <tableCells>
+                                                    <tableCell>
+                                                      <contents>
+                                                        <textItem>
+                                                          <dataSource>
+                                                            <staticValue>ECN Number:</staticValue>
+                                                          </dataSource>
+                                                        <style><CSS value="font-weight:bold"/></style></textItem>
+                                                      </contents>
+                                                    <style><CSS value="white-space:nowrap;font-weight:bold"/></style></tableCell>
+                                                    <tableCell>
+                                                      <contents>
+                                                        
+                                                      <textItem><dataSource><dataItemValue refDataItem="associatedECNNumber"/></dataSource></textItem></contents>
+                                                    </tableCell>
+                                                  </tableCells>
+                                                </tableRow>
+                                              </tableRows>
+                                              <style>
+                                                <CSS value="border-collapse:collapse;width:100%;height:100%"/>
+                                              <defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+                                            </table>
+                                          </contents>
+                                          
+                                        <style><CSS value="width:30%"/></style></tableCell>
+                                      </tableCells>
+                                    </tableRow>
+                                  </tableRows>
+                                  <style>
+                                    <CSS value="border-collapse:collapse;width:100%;height:0.62in"/>
+                                  <defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+                                </table></contents></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>INITIATION</staticValue></dataSource><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem><textItem><dataSource><staticValue>_</staticValue></dataSource><style><CSS value="color:white"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem><textItem><dataSource><staticValue>ENGINEER</staticValue></dataSource><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem></contents><style><CSS value="width:0.125in;border:0.25pt solid black"/></style></tableCell><tableCell><contents><table>
+                                              <tableRows>
+                                                <tableRow>
+                                                  <tableCells>
+                                                    <tableCell>
+                                                      <contents>
+                                                        <table>
+                                                          <tableRows>
+                                                            <tableRow>
+                                                              <tableCells>
+                                                                <tableCell>
+                                                                  <contents>
+                                                                    <table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Created By:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                              <style>
+                                                                                <CSS value="height:30%;text-align:left;background-color:#B2CCE5;font-weight:bold;border-right:0.25pt solid black"/>
+                                                                              <defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style>
+                                                                            </tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Date:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;background-color:#B2CCE5;font-weight:bold;border-right:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Mfg Location:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;background-color:#B2CCE5;font-weight:bold"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="creatorFullName"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="height:0.38in;border-right:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="thePersistInfo.createStamp"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="border-right:0.25pt solid black"/></style></tableCell>
+
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="Plants_Affected"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            </tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table>
+                                                                  </contents>
+                                                                </tableCell>
+                                                              </tableCells>
+                                                            </tableRow>
+                                                            <tableRow>
+                                                              <tableCells>
+                                                                <tableCell>
+                                                                  <contents>
+                                                                    <table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Finished Goods Affected:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="containerName"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="height:0.4in"/></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table>
+                                                                  </contents>
+                                                                </tableCell>
+                                                              </tableCells>
+                                                            </tableRow>
+                                                            <tableRow>
+                                                              <tableCells>
+                                                                <tableCell>
+                                                                  <contents>
+                                                                    <table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Description of Modification:</staticValue>
+                                                                                  </dataSource>
+                                                                                  <style>
+                                                                                    <CSS value="line-height:12px;font-weight:bold;padding-right:3px;padding-left:3px"/>
+                                                                                  </style>
+                                                                                </textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="description"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="height:0.4in"/></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table>
+                                                                  </contents>
+                                                                </tableCell>
+                                                              </tableCells>
+                                                            </tableRow><tableRow><tableCells><tableCell><contents><table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Local Language Description:</staticValue>
+                                                                                  </dataSource>
+                                                                                  <style>
+                                                                                    <CSS value="line-height:12px;font-weight:bold;padding-right:3px;padding-left:3px"/>
+                                                                                  </style>
+                                                                                </textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="localLanguageDescription"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="height:0.4in"/></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table></contents></tableCell></tableCells></tableRow>
+                                                            <tableRow>
+                                                              <tableCells>
+                                                                <tableCell>
+                                                                  <contents>
+                                                                    <table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Reason for Modification:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="proposedChange"/></dataSource><style><CSS value="padding-right:3px;padding-left:3px"/></style></textItem></contents>
+                                                                            <style><CSS value="height:0.4in"/></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table>
+                                                                  </contents>
+                                                                </tableCell>
+                                                              </tableCells>
+                                                            </tableRow><tableRow><tableCells><tableCell><contents><table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Affected Objects:</staticValue>
+                                                                                  </dataSource>
+                                                                                <style><CSS value="font-weight:bold;padding-right:3px;padding-left:3px"/></style></textItem>
+                                                                              </contents>
+                                                                            <style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:bottom"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <list name="!RSU_NM_list!1" refQuery="Query3">
+																																									
+																																									
+																																									
+																																									<style>
+																																										<CSS value="border-collapse:collapse;width:100%"/>
+																																									<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																																									<listColumns><listColumn><listColumnTitle><style><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/></style><contents><textItem><dataSource><staticValue>Number</staticValue></dataSource></textItem></contents></listColumnTitle><listColumnBody><style><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles><CSS value="width:40%"/></style><contents><hyperlink>
+			<dataSource>
+				
+			<dataItemValue refDataItem="objectURL"/></dataSource>
+			<contents>
+				<textItem>
+					<dataSource>
+						
+					<dataItemValue refDataItem="AffectNumber"/></dataSource>
+				</textItem>
+			</contents>
+			<style>
+				<defaultStyles>
+					<defaultStyle refStyle="hy"/>
+				</defaultStyles>
+			</style>
+		</hyperlink></contents></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Name</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="width:40%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Revision</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:center;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="versionInfo.identifier.versionId"/></dataSource></textItem></contents><style><CSS value="text-align:center"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><sortList><sortItem refDataItem="number" sortOrder="ascending"/></sortList><masterDetailLinks><masterDetailLink><masterContext><dataItemContext refDataItem="number"/></masterContext><detailContext><dataItemContext refDataItem="number"/></detailContext></masterDetailLink></masterDetailLinks></list>
+																																							</contents>
+                                                                            <style><CSS value="height:0.4in"/></style></tableCell>
+                                                                          </tableCells>
+                                                                          <style>
+                                                                            <CSS value="vertical-align:top"/>
+                                                                          </style>
+                                                                        </tableRow>
+                                                                      </tableRows>
+                                                                      <style>
+                                                                        <CSS value="border-collapse:collapse;width:100%;height:100%;border:0.25pt solid black"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </table></contents></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents>
+																																		<list name="!RSU_NM_list!2" refQuery="Query2">
+																																			<style>
+																																				<CSS value="border-collapse:collapse;width:100%"/>
+																																			<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+																																			<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Attachments</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:left;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><hyperlink>
+																																								<dataSource>
+																																									<dataItemValue refDataItem="attachmentURL"/></dataSource>
+																																								<contents>
+																																									<textItem>
+																																										<dataSource>
+																																											<dataItemValue refDataItem="fileName"/></dataSource>
+																																									</textItem>
+																																								</contents>
+																																							<style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></hyperlink>
+																																						</contents><style><CSS value="width:50%"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><sortList><sortItem refDataItem="fileName" sortOrder="ascending"/></sortList><masterDetailLinks><masterDetailLink><masterContext><dataItemContext refDataItem="number"/></masterContext><detailContext><dataItemContext refDataItem="number"/></detailContext></masterDetailLink></masterDetailLinks></list>
+																																	</contents></tableCell></tableCells></tableRow>
+                                                          </tableRows>
+                                                          <style>
+                                                            <CSS value="border-collapse:collapse;width:100%;height:100%"/>
+                                                          <defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+                                                        </table>
+                                                      </contents>
+                                                      
+                                                    <style><CSS value="height:2.75in;border:0.25pt solid black"/></style></tableCell>
+                                                  </tableCells>
+                                                </tableRow>
+                                                <tableRow>
+                                                  <tableCells>
+                                                    <tableCell>
+                                                      <contents>
+                                                        <table>
+                                                          <tableRows>
+                                                            <tableRow>
+                                                              <tableCells>
+                                                                <tableCell>
+                                                                  <contents>
+                                                                    <table>
+                                                                      <tableRows>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>ASME Affected?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                              
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="asme_affected"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Eurovent Affected?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                              
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="Eurovent_Affected"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Flammability Analysis Required?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents><textItem><dataSource><dataItemValue refDataItem="flammability_analysis_required"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Impact on current inventory</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="impact_on_current_inventory"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Implementation Disposition</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="implementation_disposition"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Materials of Concern Analysis Required?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="materials_of_concern_analysis_required"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Originating Site</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="originating_site"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Payback Time</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="payback_time"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>PED Affected?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="ped_affected"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                              <textItem><dataSource><staticValue>Reason for Change</staticValue></dataSource></textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                              <textItem><dataSource><dataItemValue refDataItem="Reason_for_Change"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow>
+                                                                        <tableRow>
+                                                                          <tableCells>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Pre-Production Run(s) Required?</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+                                                                                
+                                                                              <textItem><dataSource><dataItemValue refDataItem="preproduction_run_required"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents>
+
+                                                                              <textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Pre-Production/Pilot Run(s) Category</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents>
+                                                                            <style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                            <tableCell>
+                                                                              <contents><textItem><dataSource><dataItemValue refDataItem="pre_production_pilot_run_category"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents>
+                                                                            <style><CSS value="width:0.75in;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell>
+                                                                          </tableCells>
+                                                                        </tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Supplier Product Application Review Required</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="Supplier_Product_Application_Review_Required"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>TSG Affected</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="TSG_Affected"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents/><style><CSS value="padding:3px"/></style></tableCell><tableCell><contents/><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px"/></style></tableCell><tableCell><contents/><style><CSS value="padding:3px"/></style></tableCell><tableCell><contents/><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Annualized non-recurring benefit estimate (include unit of measure)</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="annualized_non_recurring_benefit_estimate"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Annualized recurring benefit estimate (include unit of measure)</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="annualized_recurring_benefit_estimate"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Annualized non-recurring cost estimate (include unit of measure)</staticValue>
+                                                                      </dataSource>
+                                                                    <style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="annualized_non_recurring_cost_estimate"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><staticValue>Annualized recurring cost estimate (include unit of measure)</staticValue></dataSource></textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="annualized_recurring_cost_estimate"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Labor time estimate - Engineering (in hours)</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="labor_time_estimate_engineering"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Labor time estimate - Manufacturing (in hours)</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="labor_time_estimate_manufacturing"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                                  <dataSource>
+                                                                                    <staticValue>Labor time estimate - Other (in hours)</staticValue>
+                                                                                  </dataSource>
+                                                                                </textItem></contents><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="labor_time_estimate_other"/></dataSource><style><CSS value="padding-right:10px;padding-left:10px"/></style></textItem></contents><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents/><style><CSS value="padding:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents/><style><CSS value="width:0.75in;text-align:center;vertical-align:middle;padding-top:3px;padding-bottom:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow>
+                                                                        
+                                                                      </tableRows>
+                                                                      
+                                                                    <style><CSS value="height:100%;width:100%;border-collapse:collapse"/><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></table>
+                                                                  </contents>
+                                                                </tableCell>
+                                                              </tableCells>
+                                                            </tableRow>
+
+
+                                                          </tableRows>
+                                                          <style>
+                                                            <CSS value="border-collapse:collapse;height:100%"/>
+                                                          <defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+                                                        </table>
+                                                      </contents>
+                                                      <style>
+                                                        <CSS value="width:100%;border:0.25pt solid black"/>
+                                                      </style>
+                                                    </tableCell>
+                                                  </tableCells>
+                                                </tableRow>
+                                              </tableRows>
+                                              <style>
+                                                <CSS value="border-collapse:collapse;width:100%"/>
+                                              <defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+                                            </table></contents></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>CRB</staticValue></dataSource><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem><textItem><dataSource><staticValue>-</staticValue></dataSource><style><CSS value="color:white"/><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem><textItem><dataSource><staticValue>COMMITTEE</staticValue></dataSource><style><defaultStyles><defaultStyle refStyle="cls1"/></defaultStyles></style></textItem></contents><style><CSS value="width:0.125in;border:0.25pt solid black"/></style></tableCell><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell colSpan="4"><contents><textItem><dataSource><staticValue>Approval Signatures:</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:left;vertical-align:middle;background-color:#B2CCE5;height:10px;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Change Admin I</staticValue>
+                                                                      </dataSource>
+                                                                    <style><CSS value="font-weight:bold"/><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="height:20px;border:0.25pt solid black"/></style></tableCell><tableCell colSpan="3"><contents><textItem><dataSource><dataItemValue refDataItem="CAIFullName"/></dataSource><style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem><textItem><dataSource><dataItemValue refDataItem="CAIDate1"/></dataSource><style><CSS value="padding-left:10px"/></style></textItem></contents><style><CSS value="padding-left:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Change Review Board Approval</staticValue>
+                                                                      </dataSource>
+                                                                      <style>
+                                                                        <CSS value="font-weight:bold"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </textItem></contents><style><CSS value="border:0.25pt solid black"/></style></tableCell><tableCell colSpan="3"><contents><textItem><dataSource><dataItemValue refDataItem="crbSigs"/></dataSource></textItem></contents><style><CSS value="padding-left:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Change Admin I I</staticValue>
+                                                                      </dataSource>
+                                                                    <style><CSS value="font-weight:bold"/><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="border:0.25pt solid black"/></style></tableCell><tableCell colSpan="3"><contents><textItem><dataSource><dataItemValue refDataItem="caiiFullName1"/></dataSource></textItem><textItem><dataSource><dataItemValue refDataItem="caiiDate1"/></dataSource><style><CSS value="padding-left:10px"/></style></textItem></contents><style><CSS value="padding-left:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Change Category : </staticValue>
+                                                                      </dataSource>
+                                                                      <style>
+                                                                        <CSS value="font-weight:bold"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </textItem></contents><style><CSS value="text-align:left;vertical-align:middle;font-weight:bold;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="theCategory"/></dataSource><style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding-left:3px;border:0.25pt solid black"/></style></tableCell><tableCell><contents><textItem>
+                                                                      <dataSource>
+                                                                        <staticValue>Status :  </staticValue>
+                                                                      </dataSource>
+                                                                      <style>
+                                                                        <CSS value="font-weight:bold"/>
+                                                                      <defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style>
+                                                                    </textItem></contents><style><CSS value="text-align:left;vertical-align:middle;font-weight:bold;background-color:#B2CCE5;border:0.25pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell><tableCell><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource><style><defaultStyles><defaultStyle refStyle="cls2"/></defaultStyles></style></textItem></contents><style><CSS value="padding-left:3px;border:0.25pt solid black"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%;height:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents><style><CSS value="width:100%;height:100px"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Comments:</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;text-align:left;background-color:#B2CCE5;border-top:1pt solid black;border-left:1pt solid black;border-right:1pt solid black"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents/><style><CSS value="height:1in;border-bottom:1pt solid black;border-left:1pt solid black;border-right:1pt solid black"/></style></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table></contents>
+									
+								<style><defaultStyles><defaultStyle refStyle="rc"/></defaultStyles></style></repeaterTableCell>
+							</repeaterTable>
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="pb"/></defaultStyles></style></pageBody>
+					
+					
+				<style><CSS value="width:8.5in;height:11in"/><defaultStyles><defaultStyle refStyle="pg"/></defaultStyles></style></page>
+			</reportPages>
+		<pageSetup orientation="portrait"><namedPaper name="/configuration/pageDefinition[@name='Letter']"/></pageSetup><promptPages><page name="Prompt Page1">
+					<pageHeader>
+						<contents>
+							<block>
+								<contents>
+									<textItem>
+										<dataSource>
+											<staticValue>BSS ECR Report</staticValue>
+										</dataSource>
+									<style><defaultStyles><defaultStyle refStyle="tt"/></defaultStyles></style></textItem>
+								</contents>
+							<style><defaultStyles><defaultStyle refStyle="ta"/></defaultStyles></style></block>
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="hp"/></defaultStyles></style></pageHeader>
+					<pageBody>
+						<contents><table><tableRows><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Provide values for the report you are about to run.</staticValue></dataSource></textItem></contents><style><CSS value="padding-top:3px;padding-bottom:3px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><image>
+														<dataSource>
+															<staticValue>../skins/../prompting/reportskin/prompting/images/icon_required.gif</staticValue>
+														</dataSource>
+													</image>
+													<image>
+														<dataSource>
+															<staticValue>../skins/../prompting/reportskin/prompting/images/spacer.gif</staticValue>
+														</dataSource>
+													</image>
+													<textItem><dataSource><staticValue>Indicates a required field.</staticValue></dataSource><style><CSS value="color:#0000CC"/></style></textItem></contents><style><CSS value="padding-top:3px;padding-bottom:3px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><image>
+	<dataSource>
+		<staticValue>../skins/../prompting/reportskin/prompting/images/error_timed_on.gif</staticValue>
+	</dataSource>
+</image><image>
+	<dataSource>
+		<staticValue>../skins/../prompting/reportskin/prompting/images/spacer.gif</staticValue>
+	</dataSource>
+</image><textItem><dataSource><staticValue>Points to missing information.</staticValue></dataSource><style><CSS value="color:#0000CC"/></style></textItem></contents><style><CSS value="padding-top:3px;padding-bottom:3px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents/><style><CSS value="height:20px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><textItem><dataSource><staticValue>Enter ECR Number(s) Here</staticValue></dataSource><style><CSS value="padding-left:10px;padding-right:5px;color:#0000CC"/></style></textItem><textBox multiSelect="false" numbersOnly="false" parameter="ECRNumber" range="false" required="true"/>
+												</contents><style><CSS value="vertical-align:top"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents/><style><CSS value="height:20px"/></style></tableCell></tableCells></tableRow><tableRow><tableCells><tableCell><contents><richTextItem>
+														<dataSource>
+															<staticValue>Wildcard "*" can be used to search for multiple ECRs. 
+e.g ECR10003*
+
+Multiple ECR Numbers can be entered separated by commas,
+no spaces allowed.
+e.g. ECR1000366,ECR1000387,ECR1000404
+
+A maximum of 25 ECRs can be entered.</staticValue>
+														</dataSource>
+													</richTextItem></contents></tableCell></tableCells></tableRow></tableRows><style><CSS value="border-collapse:collapse;width:100%"/><defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style></table>
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="py"/></defaultStyles></style></pageBody>
+					<pageFooter>
+						<contents>
+							<promptButton type="finish">
+								<contents/>
+							<style><defaultStyles><defaultStyle refStyle="bp"/></defaultStyles></style></promptButton><promptButton type="cancel">
+								<contents/>
+							<style><defaultStyles><defaultStyle refStyle="bp"/></defaultStyles></style></promptButton>
+							
+							
+							
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="fp"/></defaultStyles></style></pageFooter>
+				<style><defaultStyles><defaultStyle refStyle="pp"/></defaultStyles></style></page>
+			</promptPages></layout>
+	</layouts>
+<classStyles><classStyle label="Vertical Text" name="cls1"><CSS value="padding:5px 3px 5px 3px;margin:0px;font-family:'Arial Black';font-size:11pt;font-weight:bold;font-style:normal;text-align:center;vertical-align:middle;white-space:normal;line-height:1.1em;direction:inherit;writing-mode:lr-tb;width:15pt;word-break:break-all"/></classStyle>
+	<classStyle label="Report Text" name="cls2"><CSS value="font-size:10pt;font-weight:normal;font-style:normal;padding-left:3px"/></classStyle>
+	</classStyles><XMLAttributes><XMLAttribute name="RS_CreateExtendedDataItems" output="no" value="false"/><XMLAttribute name="listSeparator" output="no" value=","/><XMLAttribute name="RS_modelModificationTime" value="2015-11-06T08:42:42.728Z" output="no"/></XMLAttributes><reportName>BSS ECR Report</reportName></report>

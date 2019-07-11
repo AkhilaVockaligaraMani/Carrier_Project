@@ -1,0 +1,645 @@
+<!--
+File: BSSECRQuery.xml
+
+Description:	This InfoEngine query gets an RCS ECR details.
+
+Input: 	A single ECR number or multiple separated by commas
+Output: Details of ECR: CarrierLogo, annualized_non_recurring_benefit_estimate, annualized_non_recurring_cost_estimate, annualized_recurring_benefit_estimate,
+						theCategory, name, theRequestPriority, annualized_recurring_cost_estimate, impact_on_current_inventory,state.state, preproduction_run_required,
+						pre_production_pilot_run_category,implementation_disposition, labor_time_estimate_engineering,Serial_Cutoff_Date_Code_Required_at_Business_Unit,
+						labor_time_estimate_manufacturing, labor_time_estimate_other, thePersistInfo.updateStamp, originating_site, payback_time, thePersistInfo.createStamp,
+						number, description, resolutionDate, recurringCostEst, nonRecurringCostEst, needDate, obid, containerName, creatorName, Plants_Affected,
+						implementation_disposition, TSG_Affected, theCategory, associatedECNNumber, associatedECNName, proposedChange, affectedProductNumber,
+						affectedProductName, creatorFullName, modifierFullName, CAIFullName, CAIVote, CAIComments, CAIDate, printOption, Reason_for_Change
+
+		Maximum output is 25 ECRs
+
+Writen By: Tad Guski 2009-02-10
+
+Revision History:
+2009-12-22	Paul Sweet	Updated per RCS PMP Replacement specs provided by Don Bisesi.
+2010-01-15	Paul Sweet	Added the ability to input multiple ECR numbers as input separated by commas
+2010-01-30	Paul Sweet	Added functionality to get electronic signatures and dated from the workflow for all involved in the process.
+2011-01-22	Paul Sweet	Replaced the WiQuery webject with java code. This webject caused performance issues, especially in Windchill 9.1 M050
+
+-->
+
+<?xml version="1.0" standalone="yes"?>
+<%@page language="java" session="false"%>
+<%@taglib uri="http://www.ptc.com/infoengine/taglib/core" prefix="ie"%>
+<%@page import="java.util.*"%>
+<%@page import="wt.adapter.BasicWebjectDelegate"%>
+<%@page import="wt.workflow.work.WorkItem"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.TextDisplayComponent"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.DateDisplayComponent"%>
+<%@page import="java.beans.XMLDecoder"%>
+<%@page import="java.io.*"%>
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
+<%@page import="wt.services.applicationcontext.implementation.ServiceProperties"%>
+<%@page import="wt.util.WTProperties"%>
+<%@page import="ext.carrier.wc.wtChangeRequest.CarrierWTChangeRequestHelper"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportHelper"%>
+<%@page import="ext.carrier.wc.cognos.BSSLCStateReportHelper"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportRB"%>
+<%@page import="wt.change2.WTChangeRequest2"%>
+<%@page import="wt.fc.QueryResult"%>
+<%@page import="wt.workflow.engine.WfEngineHelper"%>
+<%@page import="wt.workflow.engine.WfProcess"%>
+<%@page import="wt.workflow.definer.WfProcessTemplate"%>
+<%@page import="wt.workflow.definer.WfDefinerHelper"%>
+<%@page import="wt.workflow.engine.WfActivity"%>
+<%@page import="wt.workflow.work.WfAssignedActivity"%>
+<%@page import="wt.workflow.work.WfAssignment"%>
+<%@page import="wt.workflow.work.WfAssignmentState"%>
+<%@page import="wt.workflow.definer.WfTemplateObject"%>
+<%@page import="wt.workflow.definer.WfAssignedActivityTemplate"%>
+<%@page import="wt.fc.Persistable"%>
+<%@page import="wt.fc.PersistenceHelper"%>
+<%@page import="wt.workflow.engine.WfVotingEventAudit"%>
+<%@page import="wt.project.Role"%>
+<%@page import="wt.workflow.definer.UserEventVector"%>
+<%@page import="wt.vc.Iterated"%>
+
+<!--com.infoengine.delegate.def
+@repositoryType com.ptc.windchill
+@delegateName BSS_ECR_Report
+@typeId com.ptc.windchill.enterprise.report.ReportTask
+@installDelegate true
+-->
+
+<!--com.infoengine.soap.rpc.def
+Queries for all Projects available to the user
+{resourceBundle: com.ptc.hulseware.reports.comTycoProjectsRB}
+@param java.lang.String ECRNumber the ECR number to query
+@return INFOENGINE_GROUP ${out} {columns: java.lang.String CarrierLogo, java.lang.String theComplexity, java.lang.String annualized_non_recurring_benefit_estimate,java.lang.String annualized_non_recurring_cost_estimate,java.lang.String annualized_recurring_benefit_estimate,java.lang.String theCategory,java.lang.String name,java.lang.String theRequestPriority,java.lang.String annualized_recurring_cost_estimate,java.lang.String impact_on_current_inventory,java.lang.String state.state,java.lang.String preproduction_run_required,java.lang.String pre_production_pilot_run_category,java.lang.String implementation_disposition,java.lang.String labor_time_estimate_engineering,java.lang.String Serial_Cutoff_Date_Code_Required_at_Business_Unit,java.lang.String labor_time_estimate_manufacturing,java.lang.String labor_time_estimate_other,java.sql.Timestamp thePersistInfo.updateStamp,java.lang.String originating_site,java.lang.String payback_time,java.sql.Timestamp thePersistInfo.createStamp,java.lang.String number,java.lang.String description,java.sql.Timestamp resolutionDate,java.lang.String recurringCostEst,java.lang.String nonRecurringCostEst,java.sql.Timestamp needDate,java.lang.String obid,java.lang.String containerName,java.lang.String creatorName, java.lang.String Plants_Affected, java.lang.String implementation_disposition, java.lang.String TSG_Affected, java.lang.String theCategory, java.lang.String associatedECNNumber, java.lang.String associatedECNName, java.lang.String proposedChange, java.lang.String affectedProductNumber, java.lang.String affectedProductName, java.lang.String creatorFullName, java.lang.String modifierFullName, java.lang.String CAIFullName, java.lang.String CAIVote, java.lang.String CAIComments,java.sql.Timestamp CAIDate,java.lang.String printOption,java.lang.String crbFullName,java.lang.String crbVote,java.lang.String crbComments,java.sql.Timestamp crbDate,java.lang.String caiiFullName,java.lang.String caiiVote,java.lang.String caiiComments,java.sql.Timestamp caiiDate,java.lang.String Reason_for_Change,java.lang.String crbSigs,java.lang.String asme_affected,java.lang.String Eurovent_Affected,java.lang.String flammability_analysis_required,java.lang.String localLanguageDescription,java.lang.String materials_of_concern_analysis_required,java.lang.String ped_affected,java.lang.String preproduction_run_required,java.lang.String Supplier_Product_Application_Review_Required,java.lang.String crbSigs}
+-->
+
+<!--
+The purpose of the com.ptc.hulseware.resources comment block is to be able to auto-generate (at least) 
+the default resource bundles for this task. You can specify as many bundles as needed
+-->
+
+<!--com.ptc.hulseware.resources
+{includeBundles: wt.projmgmt.admin.Project2RB, wt.part.WTPart.partResourceRB }
+{columns: RPStatus: RP Status, StaffStatus: Staff Status } -->
+<%
+try
+{ // begin try, getting ECR details
+
+	// define the cognos properties file
+	java.util.Properties properties = ServiceProperties.getServiceProperties("WTServiceProviderFromProperties");
+
+	// get the value of DEBUG from the properties file
+	boolean DEBUG = Boolean.valueOf(properties.getProperty("ext.carrier.wc.cognos.reports.DEBUG"));
+
+	// get the passed ECR number string
+	String passedECRNumber = (String) getParam("ECRNumber","*");
+
+	// initialize the whereclause as an empty set
+	String whereclause = "()";
+
+	if (passedECRNumber.equals(" "))
+	{ // begin if, incoming ECR number is a blank space
+
+		if(DEBUG) System.out.println("User entered a space for ECR Number");
+
+		// set the passed ECR number to an asterik
+		passedECRNumber="*";
+
+	} // end if, incoming ECR number of a blank space
+
+	if ( !passedECRNumber.equals("*"))
+	{ // begin if the passed ECR number is not an asterick
+	
+		// get the inputted ecr number(s) and put them into a string tokenizer for processing
+		StringTokenizer passedECRNums = new StringTokenizer(passedECRNumber, ",");
+	
+		if(passedECRNums.countTokens() >= 1)
+		{ // begin if, there is at least one token
+	
+			if(passedECRNums.countTokens() == 1)
+			{ // begin if, there is only one token
+	
+				// set the where for one lifecycle state
+				whereclause = "(number = '" + (String)passedECRNums.nextElement() + "')";
+	
+			} // end if, there is only one token
+			else
+			{ // begin else, there is more than one token
+	
+				// set the where for one lifecycle state
+				whereclause = "(number = '" + (String)passedECRNums.nextElement() + "'";
+	
+				while(passedECRNums.hasMoreTokens())
+				{ // begin while, creating where clause of inputted ECR Numbers
+					
+					// append the next lifecycle arg to the existing where clause
+					whereclause = whereclause + " | number = '" + (String)passedECRNums.nextElement() + "'";
+	
+				} // end while, creating where clause of inputted ECR Numbers
+	
+				// close out there where clause
+				whereclause = whereclause + ")";
+	
+			} // end else, there is more than one token
+
+		} // end if, there is at least one token
+
+	} // end if the passed ECR number is not an asterick
+
+	if(DEBUG) System.out.println("The whereclause is: " + whereclause);
+
+%>
+	<!--
+	
+	This webject get the server information
+	Output: properties group
+	
+	-->
+	<ie:webject name="Get-Properties" type="MGT">
+	    <ie:param name="AUTHORIZATION" data="${@SERVER[]authorization[]}"/>
+	    <ie:param name="ATTRIBUTE" data="wt.federation.ie.VMName"/>
+	    <ie:param name="GROUP_OUT" data="properties"/>
+	</ie:webject>
+	
+	<!--
+	
+	This webject used the information from the server properties group and input from the user to 
+	get the BSS ECR details
+	
+	Input:	ECR number or ECR number separated by a "," with no spaces
+	Output:	Out group with contains information from the ECR
+	
+	-->
+	<ie:webject name="Query-Objects" type="OBJ">
+	    <ie:param name="INSTANCE"		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+	    <ie:param name="ATTRIBUTE"		data="annualized_non_recurring_benefit_estimate,theComplexity,annualized_non_recurring_cost_estimate,annualized_recurring_benefit_estimate,theCategory,name,theRequestPriority,annualized_recurring_cost_estimate,impact_on_current_inventory,Plants_Affected,pre_production_pilot_run_category,TSG_Affected,state.state,labor_time_estimate_engineering,Serial_Cutoff_Date_Code_Required_at_Business_Unit,containerReference^containerInfo.name,labor_time_estimate_manufacturing,labor_time_estimate_other,thePersistInfo.updateStamp,preproduction_run_required,originating_site,payback_time,implementation_disposition,thePersistInfo.createStamp,number,description,resolutionDate,recurringCostEst,nonRecurringCostEst,needDate,obid,containerReference^containerInfo.name,iterationInfo.creator^name,theCategory,associatedECNNumber,associatedECNName,proposedChange,affectedProductNumber,affectedProductName,printOption,Reason_for_Change,asme_affected,Eurovent_Affected,flammability_analysis_required,localLanguageDescription,materials_of_concern_analysis_required,ped_affected,preproduction_run_required,Supplier_Product_Application_Review_Required" delim=","/>
+	    <ie:param name="unformatted" 	data="java.util.Date,java.sql.Timestamp,java.lang.Boolean,java.lang.Double,java.lang.Integer" delim=","/>
+	    <ie:param name="TYPE" 			data="WCTYPE|wt.change2.WTChangeRequest2|com.utc.carrier.projectlink.UTC.BSSECR"/>
+	    <ie:param name="WHERE" 			data="<%=whereclause%>"/>
+	    <ie:param name="PAGE_COUNT" 	data="25"/>
+	    <ie:param name="SORTBY" 		data="number"/>
+	    <ie:param name="GROUP_OUT" 		data="out"/>
+	</ie:webject>
+<%
+	// get the result of the query
+	Group gout = getGroup("out");
+	
+	// initialize path to windchill and Carrier logo
+	String strWtInstance = "";
+	String CarrierLogo = "";
+
+	// initialize string tokenizer for workflow tasks of interest
+	StringTokenizer taskNames = null;
+
+	
+		WTProperties prop = WTProperties.getLocalProperties();
+	    strWtInstance = prop.getProperty("wt.server.codebase");
+	
+	    // get Carrier logo
+	    CarrierLogo = properties.getProperty("ext.carrier.wc.cognos.reports.ECNSummaryReport.Carrier_Logo");
+
+	
+	// set printOption to false for printing from the BSS ECR Meeting Agenda Report
+	String printOption = "false";
+		
+	HashMap<String,String> userNameCache = new java.util.HashMap();
+
+	// initialize string for crb signatures to null
+	String crbSigs = "";
+
+	for (int i=0; i < gout.getElementCount(); i++ )
+	{ // begin for, process each element in group out
+
+		// get element from group out
+	    Element e = gout.getElementAt(i);
+
+		String EcrNum = (String)gout.getAttributeValue(i,"number");
+		e.addAtt (new Att ("number",EcrNum ));
+		
+		// add Carrier logo to the current element
+    	e.addAtt (new Att ("CarrierLogo",strWtInstance + CarrierLogo));
+
+		// add printOption to the current element
+    	e.addAtt (new Att ("printOption",printOption));
+
+		// get ECN Number from current the ECR Number
+				
+		String ecnNum = "";
+		try
+		{ // begin try, getting the ecr Number
+
+			ecnNum = (BSSLCStateReportHelper.getECNNumber((String)gout.getAttributeValue(i,"number"))).getNumber();
+
+		} // end try, getting the ecn Number
+		catch (java.lang.Exception e3)
+		{
+			System.out.println("E3 exception, ERROR: Gettting ECN Number: ");
+			e3.printStackTrace();
+		}
+					
+		if(DEBUG) System.out.println("The ecn Num is: '" + ecnNum + "'");
+
+		// add associatedECNNumber to the current element
+		e.addAtt (new Att ("associatedECNNumber",ecnNum));
+	
+		// get ecr obid from group out
+		String ecrObid = (String)gout.getAttributeValue(i,"obid");
+
+		// get the index of the last : from ecr obid
+	    int cidx = ecrObid.lastIndexOf(":");
+
+		// set formatted obid to substring of the original obid from 0 to last index of :
+	    String formattedObid = ecrObid.substring(0 , cidx);
+
+		// add formattedObid to the current element
+    	e.addAtt (new Att ("formattedObid",formattedObid));
+
+	    if (DEBUG) System.out.println ("Processing ECR: " + formattedObid + " for extra workflow related attributes.");
+
+		if (DEBUG) System.out.println ("Processing ECR: " + passedECRNumber + " for extra workflow related attributes.");
+
+		// initialize vectors for executed and not started Activities
+		Vector executedActivityVector= new Vector();
+
+		try
+		{ // begin try, getting work item information
+
+			// create an instance of the CarrierWTChangeRequestHelper class
+			CarrierWTChangeRequestHelper ecrHelper = new CarrierWTChangeRequestHelper();
+
+			// get the ecr
+			WTChangeRequest2 ecr = ecrHelper.getECR(passedECRNumber);
+
+			// get the locale
+        	java.util.Locale locale = java.util.Locale.getDefault();
+
+
+			// get the ECR creators full name
+			String creatorFullName = ecr.getCreatorFullName();
+
+			e.addAtt (new Att ("creatorFullName", creatorFullName));
+
+			// get the workflow(s) associated with the ecr
+			QueryResult  assocProcessResult = WfEngineHelper.service.getAssociatedProcesses(ecr, null,ecr.getContainerReference());
+
+			if (DEBUG) System.out.println("assocProcessResult size:; "+assocProcessResult.size());
+
+			if(assocProcessResult.hasMoreElements())
+			{ // begin if, there is associated process(es)
+
+				// get the first workflow from the process query
+				WfProcess process = (WfProcess)assocProcessResult.nextElement();
+
+			 	if (DEBUG) System.out.println("process  "+process.getName());
+
+			 	if(!((process.getName()).endsWith("Change Request Process")))
+				{ // begin if, the current process is the initial change request workflow
+
+					// get the next workflow process from process query
+					process = (WfProcess)assocProcessResult.nextElement();
+
+			 	} // end if, the current process is the initial change request workflow
+
+			 	if (DEBUG) System.out.println("process name is: "+ process.getName());
+
+				// get the process template from the current process
+			 	WfProcessTemplate processTemplate = (WfProcessTemplate)process.getTemplate().getObject();
+
+				// get the executed activity steps from the process
+				Enumeration executedActivityEnum = WfEngineHelper.service.getProcessSteps(process, null);
+
+			 	while(executedActivityEnum.hasMoreElements())
+				{ // begin while, go thru the executed activity enum and add the WfAssignedActivities to the executedActivityVector
+
+					// get an activity from the enumeration
+					WfActivity activity = (WfActivity)executedActivityEnum.nextElement();
+
+				 	if (DEBUG) System.out.println("In first while loop, executed activity name = " + activity.getName());
+
+				 	if(activity instanceof WfAssignedActivity)
+					{ // begin if, the current activity is of type WfAssignedActivity
+
+						// get the assigned activity from the activity
+						WfAssignedActivity assignedActivity = (WfAssignedActivity)activity;
+
+						// add the assigned activity to the executed activity vector
+						executedActivityVector.add(assignedActivity);
+
+						if(DEBUG) System.out.println("In while loop, added " + activity.getName() + " task to the executedActivityVector........");
+
+				 	} // end if, the current activity is of type WfAssignedActivity
+
+			 	} // end while, go thru the executed activity enum and add the WfAssignedActivity to the executedActivityVector
+
+			 	if(DEBUG) System.out.println("Out of while loop, processed executedActivityEnum. ExecutedActivityVector size is: " + executedActivityVector.size());
+
+				for(int n = 0; n < executedActivityVector.size(); n++)
+				{ // begin for, process the executed actvities vector getting names, dated
+
+					if(DEBUG) System.out.println("In second for loop, the executedActivityVector at position ........ " + n);
+
+					// get the assignedActivity from the executed activities vector at position n
+					WfAssignedActivity assignedActivity = (WfAssignedActivity)executedActivityVector.get(n);
+
+					if (DEBUG) System.out.println("activity name from executed activities vector = " + assignedActivity.getName());
+
+					// get the voting result from the current assigned activity
+			 		QueryResult votingEventResult = CognosReportHelper.getVotingEventsForActivity(assignedActivity);
+
+					// initialize the vote string, role, and assignee name to null string
+			 		String strVote = "";
+			 		String role = "";
+			 		String strAssigneeName = "";
+
+			 		while(votingEventResult.hasMoreElements())
+					{ // begin while, the voting event result has more elements
+
+						// get the voting event audit from the voting event result
+						WfVotingEventAudit votingEventAudit = (WfVotingEventAudit)votingEventResult.nextElement();
+
+						// get the signed date from the voting event audit
+						String signedDate = PersistenceHelper.getCreateStamp(votingEventAudit).toString();
+
+						if(votingEventAudit.getRole() != null)
+						{ // begin if, if the voting event audit role is not null
+
+							// get the role from the voting event audit
+							String strRole = votingEventAudit.getRole().toString().trim();
+
+							if(DEBUG) System.out.println("The current role name is ........ " + strRole);
+
+							// get the locale display name
+							role = Role.toRole(strRole).getDisplay(locale);
+
+						} // end if, if the voting event audit role is not null
+
+						if (DEBUG) System.out.println("role is: " + role);
+
+						if (DEBUG) System.out.println("Completed by:: "+votingEventAudit.getAssigneeRef().getIdentity());
+
+						// get the Change Admin I name
+						strAssigneeName = ((wt.org.WTUser)(votingEventAudit.getAssigneeRef().getPrincipal())).getFullName();
+
+						// get user event voting audit
+						UserEventVector userEventVec = (UserEventVector)votingEventAudit.getEventList();
+
+						// convert the userEventVec to a vector
+						Vector eventVec = userEventVec.toVector();
+
+						if (DEBUG) System.out.println("eventVec size:"+eventVec.size());
+
+						if (eventVec.size()>0)
+						{ // begin if, the eventVec has at least one element
+
+							// get the vote from the eventVec
+							strVote = (String)eventVec.elementAt(0);
+
+						} // end if, the eventVec has at least one element
+
+						if("Change Admin I".equals(role))
+						{ // begin if, the role equals Change Admin I
+
+							if (DEBUG) System.out.println("CAI_Vote:: "+strVote); 
+							if (DEBUG) System.out.println("CAIFullName "+strAssigneeName);
+							if (DEBUG) System.out.println("CAIDate "+signedDate);
+
+							// add the Change Admin I name to the current element from group out
+							e.addAtt(new Att( "CAIFullName" , strAssigneeName ));
+
+							// add the Change Admin I date complete to the current element from group out
+							e.addAtt(new Att( "CAIDate" , PersistenceHelper.getCreateStamp(votingEventAudit) ));
+
+						} // end if, the role equals Change Admin I
+						else if("Change Review Board".equals(role))
+						{ // begin else if, the role equals Change Review Board
+
+							if (DEBUG) System.out.println("crb_Vote:: "+strVote); 
+							if (DEBUG) System.out.println("crbFullName "+strAssigneeName);
+							if (DEBUG) System.out.println("crbDate "+signedDate);
+
+							if(crbSigs.equals(""))
+							{
+								if(DEBUG) System.out.println("The crbSigs is null");
+	
+								if(DEBUG) System.out.println("The crbFullName is: " + strAssigneeName);
+								crbSigs = crbSigs + strAssigneeName;
+								
+								if(DEBUG) System.out.println("The crbVote is: " + strVote);
+								crbSigs = crbSigs + " " + strVote;
+								
+								if(DEBUG) System.out.println("The crbDate is: " + signedDate);
+								crbSigs = crbSigs + " " + signedDate;
+								
+								if(DEBUG) System.out.println("The crbSigs value is: " + signedDate);
+							}
+							else
+							{
+	
+								if(DEBUG) System.out.println("The crbSigs is not null");
+	
+								if(crbSigs.endsWith(".0"))
+								{
+									crbSigs = crbSigs + "\n";
+								}
+	
+								if(DEBUG) System.out.println("The crbFullName is: " + strAssigneeName);
+								crbSigs = crbSigs + strAssigneeName;
+								
+								if(DEBUG) System.out.println("The crbVote is: " + strVote);
+								crbSigs = crbSigs + " " + strVote;
+
+								if(DEBUG) System.out.println("The crbDate is: " + signedDate);
+								crbSigs = crbSigs + " " + signedDate;
+								
+								if(DEBUG) System.out.println("The crbSigs value is: " + crbSigs);
+							}
+
+						} // end else if, the role equals Change Review Board
+						else if("Change Admin II".equals(role))
+						{ // begin else if, the role equals Change Admin II
+
+							if (DEBUG) System.out.println("caii_Vote:: "+strVote); 
+							if (DEBUG) System.out.println("caiiFullName "+strAssigneeName);
+							if (DEBUG) System.out.println("caiiDate "+signedDate);
+
+							// add the Change Admin II name to the current element from group out
+							e.addAtt(new Att( "caiiFullName" , strAssigneeName ));
+
+							// add the Change Admin II date complete to the current element from group out
+							e.addAtt(new Att( "caiiDate" , PersistenceHelper.getCreateStamp(votingEventAudit) ));
+
+						} // end else if, the role equals Change Admin II
+						else
+						{ // begin else, the role is not included in list
+				
+							System.out.println("ERROR in BSS ECR Query. Role found does not match what is included in the report. Role is: " + role);
+				
+						} // end else, the role is not included in list
+
+					} // end while, the voting event result has more elements
+
+			 	} // end for, process the all actvities vector
+
+			} // end if, there is associated process(es)
+
+		} // end try, getting work item information
+		catch ( wt.util.WTException e3)
+		{
+			System.out.println ("E3 Exception in BSSECRQuery.xml getting workflow attributes.");
+			e3.printStackTrace();
+		}
+
+	    // There was an issue with dates that have not been set where they were being passed to Cognos as an empty string.
+	    // If we trap those and remove the attribute althogether from the element then it works fine.
+	    if ( gout.getAttributeValue( i , "needDate" ) != null && gout.getAttributeValue( i , "needDate" ).toString().equals(""))
+	    {
+	        //System.out.println ("null");
+	        e.removeAtt("needDate");
+	    }
+	    if ( gout.getAttributeValue( i , "resolutionDate" ) != null && gout.getAttributeValue( i , "resolutionDate" ).toString().equals(""))
+	    {
+	        //System.out.println ("null");
+	        e.removeAtt("resolutionDate");
+	    }
+
+	    // Loop through all attributes on this element and do any attribute by attribute processing required
+	    Enumeration atts = e.getAtts();
+	    
+	    // To deal with an issue where multivalued attributes are being returned more then once in the same element (one with a single value
+	    // and one with multiple values) we will keep all attributes in this HashMap by their name. If an attribute is already in the map preference
+	    // will be given to the same attribute with multiple values
+	    HashMap<String,Att> elementAttributes = new HashMap();
+    
+	    while ( atts.hasMoreElements() )
+	    { // begin while, more attributes exist
+	        Att a = (Att)atts.nextElement();
+	        String attName = a.getName();
+	      
+	        if (DEBUG) System.out.println("Current Attribute: " + attName);
+	      
+	        // if the hashmap doesnt contain the current attribute then add it
+	        if ( ! elementAttributes.containsKey(attName) )
+	        {
+	            elementAttributes.put(attName , a);
+	        }
+	      
+	        // Some attributes are multivalued attributes
+	        // Cognos will only be passed the first value, so if there is more then one
+	        // combine them into a single attribute value separated by commas
+	        String[] multivaluedAtts = { "Plants_Affected" , "associatedECNNumber" , "associatedECNName" , "affectedProductNumber" , "affectedProductName" };
+			
+	    	boolean isMultivaluedAtt = false;
+
+	    	for (int j = 0; j < multivaluedAtts.length; j++)
+	        { // begin for, match current attribute with the list multi-valued attributes.
+
+	            if (multivaluedAtts[j].equals(attName))
+	            { // begin if, attribute names match
+
+	                isMultivaluedAtt = true;
+
+	                if (DEBUG) System.out.println(attName + " has " + a.getValueCount() + " values");
+
+	                if ( a.getValueCount() > 1 )
+	                { // begin if, attribute has more than one value
+
+	                    if (DEBUG) System.out.println ("Attribute has more than one value: "+ attName);
+	                    
+	                    // always put multivalued atts into the hashmap of atts to keep
+	                    elementAttributes.put(attName , a);
+	                    
+	                    StringBuffer newValue = new StringBuffer();
+
+	                    Enumeration rawValues = a.getValues();
+
+	                    newValue.append(rawValues.nextElement());
+
+	                    while (rawValues.hasMoreElements())
+	                    { // begin while, get the attribute values
+
+	                        newValue.append(", ");
+	                        newValue.append(rawValues.nextElement());
+
+	                    } // end while, get the attribute values
+
+	                    if (DEBUG) System.out.println ("The new value of " + attName + " is " + newValue);
+
+	                    a.removeAllValues();
+
+	                    a.addValue(newValue.toString());
+
+	               } // end if, attribute has more than one value
+
+	            } // end if, attribute names match
+
+	        } // end for, match current attribute with the list multi-valued attributes.
+	    
+	        if ( ! isMultivaluedAtt )
+	        {  // begin if, On the form, we want all Boolean values to be displayed as 'Yes' or 'No' . So loop through all the values and if they are of type Boolean then replace them with a String of the correct value
+
+	           Object rawValue = a.getRawValue();
+	
+	           if (DEBUG) System.out.println("Raw Value is: " + rawValue);
+
+	           if ( rawValue instanceof Boolean )
+	           { // begin if, check if the value is of type boolean
+	
+	               if (DEBUG) System.out.println("Is Boolean: " + attName);
+
+	               String newValue = "No";
+
+	               if ( rawValue != null && rawValue.toString().equals("true"))
+	               {
+	                   newValue = "Yes";
+	               }
+
+	               Att newAtt = new Att ( attName , newValue );
+
+	               elementAttributes.put(attName , newAtt);
+
+	           } // end if, check if the value is of type boolean
+
+	        } // end if, On the form.....
+
+	    } // end while, more attributes exist
+	    
+	    // attribute processing is done
+	    // we want to now remove all attributes from the element being processed
+	    e.removeAtts();
+	    
+	    // and now loop through the HashMap entries and put the Atts we are keeping back into the element
+	    for ( Iterator<Att> elementAtts = elementAttributes.values().iterator(); elementAtts.hasNext(); )
+	    { // begin for
+
+	        e.addAtt ( elementAtts.next() );
+
+	    } // end for
+
+		// add the crb signatures to the current element
+		e.addAtt(new Att("crbSigs", crbSigs));
+
+	} // end for, process each element in group out
+
+} // end try, getting resulting resulting object details
+catch (Exception e1)
+{ // begin catch, error getting ecn resulting objects
+
+	System.out.println("E1 Exception caught in RCS ECR Report Query");
+	e1.printStackTrace();
+
+} // end catch, error getting ecn resulting objects
+%>
+<! --
+	Input:	group out
+	Output:	group out with containername and creatorname renamed
+-->
+<ie:webject name="Change-Group" type="GRP">
+    <ie:param name="GROUP_IN" data="out" />
+    <ie:param name="RENAME" data="'containerReference^containerInfo.name'='containerName'"/>
+    <ie:param name="RENAME" data="'iterationInfo.creator^name'='creatorName'"/>
+	<ie:param name="GROUP_OUT" 		data="out"/>
+</ie:webject>
+<ie:webject name="Return-Groups" type="GRP">
+    <ie:param name="GROUP_IN"           data="out"/>
+</ie:webject>

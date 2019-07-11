@@ -1,0 +1,212 @@
+<!--
+File: EcrAttachmentsQuery.xml
+
+Description:	This InfoEngine query gets an ECR's Attachment details.
+
+Input: 	A single ECR number
+Output: Details of ECR Attachments:	fileName, attachmentsURL
+Output: Details of ECR :	number
+					
+Writen By: Paul Sweet 2011-03-05
+
+Revision History:
+015-04-11 Akhila V Mani for ESR 31701 Attachments not getting displayed for multiple ECRs
+-->
+
+<%@page language="java" session="false"%>
+<%@taglib uri="http://www.ptc.com/infoengine/taglib/core" prefix="ie"%>
+<%@page import="wt.services.applicationcontext.implementation.ServiceProperties"%>
+<%@page import="ext.carrier.wc.cognos.BSSLCStateReportHelper"%>
+<%@page import="wt.change2.WTChangeRequest2"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportHelper"%>
+
+<!--com.infoengine.delegate.def
+@repositoryType com.ptc.windchill
+@delegateName ECR_Attachments_Query
+@typeId com.ptc.windchill.enterprise.report.ReportTask
+@installDelegate true
+-->
+
+<!--com.infoengine.soap.rpc.def
+Queries for a Particular ECR
+{resourceBundle: com.ptc.hulseware.reports.comTycoProjectsRB}
+@param java.lang.String ECRNumber the ECR number to query
+@return INFOENGINE_GROUP ${out} {columns: java.lang.String fileName,java.lang.String attachmentURL,java.lang.String number}
+-->
+<%
+try
+{ // begin try, getting ECR attachments
+
+	// define the cognos properties file
+	java.util.Properties properties = ServiceProperties.getServiceProperties("WTServiceProviderFromProperties");
+
+	// get the value of DEBUG from the properties file
+	boolean DEBUG = Boolean.valueOf(properties.getProperty("ext.carrier.wc.cognos.reports.DEBUG"));
+
+	// set the ECR input error to false
+	boolean error = false;
+
+	// get passed ECR number
+	String passedEcrNumber = (String) getParam("ECRNumber","*");
+
+	if(passedEcrNumber.equals(" ") || passedEcrNumber.equals("*"))
+	{ // begin if, check the ECR input for a blank space or *
+
+		// set error equals true
+		error = true;
+
+	} // else if, check the ECR input for a blank space or *
+	else
+	{ // begin else, check each character in string for invalid entries
+
+		for(int i = 0; i < passedEcrNumber.length(); i++)
+		{ // begin for, checking character inputs
+
+			char ch = passedEcrNumber.charAt(i);
+
+			if(ch == ' ' || ch == '!' || ch == '@' || ch == '#' || ch == '$' || ch == '%' || ch == '^' || ch == '&' || ch == '*'|| ch == '(' || ch == ')' || ch == '?')
+			{ // begin if, current char is a special char, set error to true
+
+				error = true;
+
+			} // end if, current char is a special char, set error to true
+			
+		} // end for, checking character inputs
+
+	} // begin else, check each character in string for invalid entries
+
+	//**************************ESR 31701 *****************
+	if(error == false)
+	{ // begin if, the ECR input passed input criteria
+		String separator = ",";
+		System.out.println(" -----------Passed ECR Numbers-----------"+passedEcrNumber);
+		StringTokenizer numberTokens = new StringTokenizer(passedEcrNumber, separator);
+
+		if(numberTokens.countTokens() > 0)
+		{ // begin if, there are number tokens in the list
+
+			// get the number of number tokens
+			int numTokens = numberTokens.countTokens();
+	
+				Group gTempOut = new Group();
+			
+				for(int i = 0; i < numTokens; i++)
+				{ // begin for, building where clause for multiple ECRs
+
+					// get number
+					String number = numberTokens.nextToken().trim();
+					
+					//Pass each number to the whereclause
+					String whereclause = "(number='"+ number +"')";
+
+			 System.out.println("The numbers where clause is: " + whereclause);
+
+%>
+
+		<!-- Get-Properties webject is used to get system information -->
+		<ie:webject name="Get-Properties" type="MGT">
+	    	<ie:param name="AUTHORIZATION" data="${@SERVER[]authorization[]}"/>
+	    	<ie:param name="ATTRIBUTE" data="wt.federation.ie.VMName"/>
+	    	<ie:param name="GROUP_OUT" data="properties"/>
+		</ie:webject>
+	
+		<!-- Query-Objects webject is used to get the ECR information for the passed ECR number. 
+			 Input: ECR number
+			 Output group = ECR
+		-->
+		<ie:webject name="Query-Objects" type="OBJ">
+	    	<ie:param name="INSTANCE" 		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+	    	<ie:param name="ATTRIBUTE"		data="obid,name,number" delim=","/>
+	    	<ie:param name="TYPE" 			data="wt.change2.WTChangeRequest2"/>
+	    	<ie:param name="WHERE"			data="<%=whereclause%>"/>
+	    	<ie:param name="SORTBY"			data="number"/>
+	    	<ie:param name="GROUP_OUT"		data="ECR"/>
+		</ie:webject>
+
+		<!-- Query-Links webject is used to get all attachments from the passed ECR obid. 
+			 Input: ECR group
+			 Output: out group
+		-->
+		<ie:webject name="Query-Links" type="OBJ">
+			<ie:param name="INSTANCE"		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+			<ie:param name="ATTRIBUTE" 		data="fileName" delim=","/>
+			<ie:param name="GROUP_IN" 		data="ECR"/>
+			<ie:param name="TYPE" 			data="wt.content.HolderToContent"/>
+			<ie:param name="DIRECTION" 		data="theContentItem"/>
+			<ie:param name="GROUP_OUT"		data="out"/>
+		</ie:webject>
+		
+		
+<%
+		Group gecn = getGroup("ECR");				
+		WTChangeRequest2 ecrObj = new WTChangeRequest2();
+		
+				ArrayList<WTChangeRequest2> changeReqList = CognosReportHelper.getECR(number);
+					
+				if(changeReqList.size()>0)
+				{
+					ecrObj = (WTChangeRequest2)changeReqList.get(0);
+				}					
+
+		// get the result of the query
+		Group gout = getGroup("out");
+
+		for (int z=0; z < gout.getElementCount(); z++ )
+		{ // begin for, process each element
+	
+			// get element at position z
+			Element e = gout.getElementAt(z);
+	
+	    	// initialize ECR URL
+	    	String attachmentURL = "";
+		
+	    	try
+	    	{ // begin try, getting the ECR attachemtn URL
+				
+				attachmentURL = BSSLCStateReportHelper.getAttachmentsPageURLECR((String)gout.getAttributeValue(z,"obid"),ecrObj);
+				
+	
+	    	} // end try, getting the ECR attachment URL
+	    	catch (java.lang.Exception e2)
+	    	{
+	        	System.out.println("E2 exception, ERROR: Gettting ECR attachment URL in EcrAttachementsQuery ");
+				e2.printStackTrace();
+	    	}
+	
+	    	// add attachmentURL to the current element
+	    	e.addAtt (new Att ("attachmentURL",attachmentURL));
+		    e.addAtt (new Att ("number",number));
+			
+		} // end for, process each Element
+		for(int k = 0; k < gout.getElementCount(); k++)
+		{ // begin for, copy elements from group out to group temp out
+		
+			gTempOut.addElement(gout.getElementAt(k));
+			
+		} // end for, copy elements from group out to group temp out
+	
+		gout.removeElements();
+		for(int m = 0; m < gTempOut.getElementCount(); m++)
+		{ // begin for, copy elements from group tempout to group out
+		
+			gout.addElement(gTempOut.getElementAt(m));
+		} //end for copy elements from group tempout to group out
+		
+	} // end if, the passed ECR number is not a wildcard, set whereclause	
+			
+			
+		}
+	}
+} // end try, getting ECR details
+catch (Exception e1)
+{ // begin catch, error getting ECR details
+
+	System.out.println("E1 exception caught in ECR Attachments Query");
+	e1.printStackTrace();
+
+} // end catch, error getting ECR attachments
+%>
+<ie:webject name="Return-Groups" type="GRP">
+    <ie:param name="GROUP_IN"           data="out"/> 
+</ie:webject>
