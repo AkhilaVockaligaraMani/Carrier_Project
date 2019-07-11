@@ -1,0 +1,18 @@
+<!-- ====================ESR 41652,36848 Start Here=========================-->
+<!--==================================================================-->
+<!-- E C N    S U M M A R Y   C O G N O S   Report Entries Start Here -->
+<!--==================================================================-->
+
+
+<Property name="ext.carrier.wc.cognos.reports.ECNSummaryReport.PRT" default="/wt/clients/images/proe/prt_image.gif" targetFile="codebase/ext/carrier/wc/cognos/reports/CognosReport.properties"/>
+
+<Property name="ext.carrier.wc.cognos.reports.ECNSummaryReport.ASM" default="/wt/clients/images/proe/asm_image.gif" targetFile="codebase/ext/carrier/wc/cognos/reports/CognosReport.properties"/>
+
+<Property name="ext.carrier.wc.cognos.reports.ECNSummaryReport.PV_Icon" default="/wt/clients/images/wvs/pview.gif" targetFile="codebase/ext/carrier/wc/cognos/reports/CognosReport.properties"/>
+
+<Property name="ext.carrier.wc.cognos.reports.BSSLCSTATEReport.PDF_THUMBNAIL" default="/wt/clients/images/pdf.gif"  targetFile="codebase/ext/carrier/wc/cognos/reports/CognosReport.properties" />
+
+<!--==================================================================-->
+<!-- E C N    S U M M A R Y   C O G N O S   Report Entries ECN Here -->
+<!--==================================================================-->
+<!-- ====================ESR 41652,36848 End Here=========================-->

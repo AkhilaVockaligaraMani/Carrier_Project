@@ -1,0 +1,404 @@
+<!- 
+File: ECNResultingObjectsQuery.xml
+
+Description:	This InfoEngine query gets an Resulting Objects details from an ECN, removes all EPMDocs
+             	whose document type is not a CADDRAWING.
+Input: 	A single ECN number and zipOption for including native PV files
+Output: Details of Resulting Objects: previousVersionUnreleased,
+		formatedObid,representationObid,objectIconURL,pvIconURL,resultingObjectURL,name,number,state.state,
+		versionInfo.identifier.versionId,docType
+
+Writen By: Paul Sweet 2009-08-18
+
+Revision History:
+2009-09-18	Paul Sweet	Added sudo code in the head of the file. Added additional try/catch blocks when processing xml.
+						Added MultilevelSeries code from version comparision.
+2010-01-20	Paul Sweet	ESR 880: Added line 638, getting epm doc type from properties file
+						Change line 649 to if (classValue.startsWith("WCTYPE|" + epmType)) using epmType from line 638
+2010-12-09	Paul Sweet	Added timestamp if blocks for debugging purposes.
+2015-08-07	Akhila V Mani     Edited to add a CADModel section  ESR 41652
+-->
+<%@page language="java" session="false"%>
+<%@taglib uri="http://www.ptc.com/infoengine/taglib/core" prefix="ie"%>
+<%@page import="java.util.*"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.net.*"%>
+<%@page import="wt.adapter.BasicWebjectDelegate"%>
+<%@page import="wt.workflow.work.WorkItem"%>
+<%@page import="com.ptc.windchill.enterprise.workflow.WorkflowDataUtility"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.TextDisplayComponent"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.DateDisplayComponent"%>
+<%@page import="com.ptc.netmarkets.model.NmOid"%>
+<%@page import="com.ptc.wvs.common.ui.VisualizationHelper"%>
+<%@page import="java.beans.XMLDecoder"%>
+<%@page import="java.io.*"%>
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
+<%@page import="ext.carrier.wc.cognos.BSSLCStateReportHelper"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportRB"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportHelper"%>
+<%@page import="wt.services.applicationcontext.implementation.ServiceProperties"%>
+<%@page import="wt.util.WTProperties"%>
+<%@page import="wt.fc.WTObject"%>
+<%@page import="wt.series.MultilevelSeries"%>
+<%@page import="wt.vc.VersionIdentifier"%>
+<%@page import="wt.doc.WTDocument"%>
+<%@page import="wt.vc.VersionControlHelper"%>
+<%@page import="wt.vc.VersionControlException"%>
+<%@page import="wt.part.WTPart"%>
+<%@page import="wt.epm.EPMDocument"%>
+<%@page import="wt.fc.ReferenceFactory"%>
+<%@page import="wt.epm.navigator.CollectItem"%>
+<%@page import="wt.epm.navigator.EPMNavigateHelper"%>
+<%@page import="wt.fc.collections.WTSet"%>
+<%@page import="wt.epm.navigator.relationship.UIRelationships"%>
+<%@page import="wt.epm.navigator.CollectItem"%>
+<%@page import="wt.epm.EPMDocumentType"%>
+<%@page import="wt.fc.collections.*"%>
+<%@page import="wt.lifecycle.State"%>
+
+
+
+
+<!--com.infoengine.delegate.def
+@repositoryType com.ptc.windchill
+@delegateName ECN_Resulting_Objects
+@typeId com.ptc.windchill.enterprise.report.ReportTask
+@installDelegate true
+-->
+
+<!--com.infoengine.soap.rpc.def
+Queries for a Particular ECN, it's related Resulting Objects
+{resourceBundle: com.ptc.hulseware.reports.comTycoProjectsRB}
+@param java.lang.String ECNNumber the ECN number to query
+@param java.lang.String Obsolete
+@param java.lang.String NewPart
+@param java.lang.String RevisedPart
+@param java.lang.String RevisedDrawing
+@param java.lang.String CADModel
+@param java.lang.String BOM
+@return INFOENGINE_GROUP ${NewBOM} {columns: java.lang.String previousVersionUnreleased,java.lang.String formatedObid,java.lang.String representationObid,java.lang.String objectIconURL,java.lang.String pvIconURL,java.lang.String resultingObjectURL,java.lang.String name,java.lang.String number,java.lang.String state.state,java.lang.String versionInfo.identifier.versionId,java.lang.String docType, java.lang.String zipOption,java.lang.String partQualifier,java.lang.String itemDisp,java.lang.String drwNumber,java.lang.String drwRev,java.lang.String source,java.lang.String ObsoleteReportName,java.lang.String NewPartsReportName,java.lang.String DrawingsReportName,java.lang.String RevisedPartsReportName,java.lang.String BOMReportName,java.lang.String PARENTPARTOBID,java.lang.String CHILDOBID,java.lang.String ITEMNO,java.lang.String COMPONENTNUMBER,java.lang.Double QTY,java.lang.String UNIT,java.lang.String CHILDSOURCE,java.lang.String COMPONENTNAME,java.lang.String STATUS,java.lang.String INFOWAS,java.lang.String uom}
+-->
+
+<%
+//@return INFOENGINE_GROUP ${NewBOM} {columns: java.lang.String previousVersionUnreleased,java.lang.String formatedObid,java.lang.String representationObid,java.lang.String objectIconURL,java.lang.String pvIconURL,java.lang.String resultingObjectURL,java.lang.String name,java.lang.String number,java.lang.String state.state,java.lang.String versionInfo.identifier.versionId,java.lang.String docType, java.lang.String zipOption,java.lang.String partQualifier,java.lang.String assyDisp,java.lang.String compDisp,java.lang.String itemDisp,java.lang.String drwNumber,java.lang.String drwRev,java.lang.String source}
+String strWtInstance = "";
+
+		try
+		{ // begin try, getting the server url properties
+
+	    	WTProperties prop = WTProperties.getLocalProperties();
+			strWtInstance = prop.getProperty("wt.server.codebase");
+
+		} // end try, getting the server url properties
+		catch(Exception e8)
+		{
+	    	CognosReportHelper.sop("Exception in ECNSummaryReportQuery.xml getting system properties ");
+			e8.printStackTrace();
+		}
+		
+String passedECNNumber = (String) getParam("ECNNumber");
+	String Obsolete= "false";
+	String NewPart=(String) getParam("NewPart");
+	String RevisedPart="false";
+	String RevisedDrawing="false";
+	String CADModel="false";
+	String BOM="false";
+	Group childGroup=null;
+try
+{ // begin try, getting resulting resulting object details
+	// define the cognos properties file
+	java.util.Properties properties = ServiceProperties.getServiceProperties("WTServiceProviderFromProperties");
+
+	// get the value of DEBUG from the properties file
+	boolean DEBUG = Boolean.valueOf(properties.getProperty("ext.carrier.wc.cognos.reports.DEBUG"));
+	CognosReportHelper.sop("Executing ECN Resulting Objects Query");
+
+	
+	
+CognosReportHelper.sop("Obsolete section-->>"+Obsolete);
+CognosReportHelper.sop("NewPart section-->>"+NewPart);
+CognosReportHelper.sop("RevisedPart section-->>"+RevisedPart);
+CognosReportHelper.sop("RevisedDrawing section-->>"+RevisedDrawing);
+CognosReportHelper.sop("CADModel section-->>"+CADModel);
+CognosReportHelper.sop("BOM section-->>"+BOM);
+	
+	String whereclause="number='"+passedECNNumber+"'";
+%>
+    <!-- Get-Properties webject is used to get system information -->
+	<ie:webject name="Get-Properties" type="MGT">
+    	<ie:param name="AUTHORIZATION" 	data="${@SERVER[]authorization[]}"/>
+    	<ie:param name="ATTRIBUTE" 		data="wt.federation.ie.VMName"/>
+    	<ie:param name="GROUP_OUT" 		data="properties"/>
+	</ie:webject>
+
+	<!-- Query-Objects webject is used to get the ECN information for the passed ECN number. 
+		 Input: ecn number
+		 Output group = ecn
+	-->
+	<ie:webject name="Query-Objects" type="OBJ">
+    	<ie:param name="INSTANCE" 		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+    	<ie:param name="ATTRIBUTE"		data="previousVersionUnreleased,resultingObjectURL,name,number,resolutionDate,thePersistInfo.createStamp,state.state" delim=","/>
+    	<ie:param name="unformatted"	data="java.net.URL,java.lang.Boolean,java.util.Date,java.sql.Timestamp,java.lang.Double,java.lang.Integer" delim=","/>
+    	<ie:param name="TYPE"     		data="wt.change2.WTChangeOrder2"/>
+    	<ie:param name="WHERE" 			data="<%=whereclause%>"/>
+    	<ie:param name="PAGE_COUNT" 	data="50"/>
+    	<ie:param name="SORTBY" 		data="number"/>
+    	<ie:param name="GROUP_OUT" 		data="out1"/>
+	</ie:webject>
+		
+<%
+
+%>		
+	<!-- Query-Links webject is used to get all change activities from the passedECN obid. 
+		 Input: out group
+		 Output: activities group
+	-->
+	<ie:webject name="Query-Links" type="OBJ">
+		<ie:param name="INSTANCE"		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+		<ie:param name="ATTRIBUTE" 		data="objectIconURL,obid,name,number,state.state,versionInfo.identifier.versionId" delim=","/>
+		<ie:param name="GROUP_IN" 		data="out1"/>
+		<ie:param name="TYPE" 			data="wt.change2.IncludedIn2"/>
+		<ie:param name="DIRECTION" 		data="theChangeActivity2"/>
+		<ie:param name="GROUP_OUT"		data="activities"/>
+	</ie:webject>
+
+<%
+
+    Group changeActivity = getGroup("activities");
+	ArrayList<WTObject> obsoletePartsList = new ArrayList<WTObject>();
+	
+	//String class="((class='WCTYPE|wt.doc.WTDocument|com.utc.carrier.projectlink.UTC.DD')|(class='wt.epm.EPMDocument')|(class='wt.part.WTPart'))";
+%>
+	    
+	<!-- Query-Links webject is used to get the changeables
+		 Input: group "actvitities"
+		 Ouput: group "changeables"
+	-->
+<ie:webject name="Create-Group" type="GRP">
+        <ie:param name="group_out" data="changeables" />
+</ie:webject>
+	
+		<%
+	Group changeables=getGroup("changeables");
+	changeables=CognosReportHelper.getAllChangeables(getGroup("activities"));
+	changeables.setClassName("wt.change2.ChangeRecord2");
+	changeables.setName("changeables");
+	addGroup(changeables);
+	%>
+	<!-- Query-Links webject is used to get RepresentableLink
+		 Input: group "changeables"
+		 Ouput: group "representation"
+	-->
+	<ie:webject name="Query-Links" type="OBJ">
+		<ie:param name="INSTANCE" 		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+		<ie:param name="ATTRIBUTE" 		data="formatedObid,pvIconURL,viewableURL,defaultRepresentation,obid,theRepresentableReference^number" delim=","/>
+		<ie:param name="GROUP_IN" 		data="changeables"/>
+		<ie:param name="TYPE"           data="wt.representation.RepresentableLink"/>
+		<ie:param name="unformatted" 	data="java.net.URL"/>
+		<ie:param name="DIRECTION" 		data="theRepresentation"/>
+		<ie:param name="GROUP_OUT" 		data="representation"/>
+	</ie:webject>
+	
+	<!-- Subset-Group webject returns only the default Reprsentation
+		 Input: group "representation"
+		 Output: group "viewables"
+	-->
+	<ie:webject name="Subset-Group" type="GRP">
+		<ie:param name="GROUP_IN" 		data="representation"/>
+		<ie:param name="FILTER" 		data="defaultRepresentation='true'"/>
+		<ie:param name="FILTER_TYPE" 	data="REGEXP"/>
+		<ie:param name="FILTER_MODE" 	data="MATCH"/>
+		<ie:param name="CASE_IGNORE" 	data="TRUE"/>
+		<ie:param name="CLASS" 			data="MATCHEDITEMS"/>
+		<ie:param name="GROUP_OUT" 		data="viewables"/>
+	</ie:webject>
+	
+	<!-- Change-Group webject modifies the obid's name, since we need to join both the changeables and viewables groups.
+		Input: group "viewables"
+		Output: group "viewables" with obid and class attributes renamed
+	-->
+	<ie:webject name="Change-Group" type="GRP">
+		<ie:param name="GROUP_IN" 		data="viewables"/>
+		<ie:param name="RENAME" 		data="'obid'='representationObid'"/>
+		<ie:param name="RENAME" 		data="'class'='representationClass'"/>
+		<ie:param name="ATTRIBUTE" 		data="representationObid" delim=","/>
+	</ie:webject>
+	
+	<!-- The  Join-Groups webject joins the passed input groups by the number. The number from viewables group retrieved by using '^'
+		 For (e.g)theRepresentableReference^number
+		Input: groups "changeables" & "viewables"
+		Output: group "out"
+	-->
+	<ie:webject name="Join-Groups" 	type="GRP">
+		<ie:param name="GROUP_IN" 		data="changeables"/>
+		<ie:param name="GROUP_IN" 		data="viewables"/>
+		<ie:param name="JOINBY" 		data="number"/>
+		<ie:param name="JOINBY" 		data="theRepresentableReference^number"/>
+		<ie:param name="JOIN_TYPE" 		data="MAX"/>
+		<ie:param name="GROUP_OUT" 		data="out"/>
+	</ie:webject>
+	
+	<%
+		Group gout = getGroup("out");
+		ArrayList bomList=new ArrayList();
+        ArrayList compareBOM=new ArrayList();
+		Group child =new Group("ChildBOMParts");
+		System.out.println("NEW Parts codeFromTask starts----");
+		ArrayList allGroups=CognosReportHelper.codeFromTask(gout,"false",NewPart,"false","false","false",passedECNNumber,obsoletePartsList,childGroup,compareBOM,bomList,child,"false");
+		System.out.println("NEW Parts codeFromTask ends----");
+		 
+		gout=(Group)allGroups.get(0);
+		//Obsolete=(String)allGroups.get(1);
+		NewPart=(String)allGroups.get(2);
+		//RevisedPart=(String)allGroups.get(3);
+		//BOM=(String)allGroups.get(4);
+		//RevisedDrawing=(String)allGroups.get(5);
+		passedECNNumber=(String)allGroups.get(6);
+		obsoletePartsList=(ArrayList)allGroups.get(7);
+		childGroup=(Group)allGroups.get(8);
+		compareBOM=(ArrayList)allGroups.get(9);
+		bomList=(ArrayList)allGroups.get(10);
+		child=(Group)allGroups.get(11);
+		//CADModel=(String)allGroups.get(12);
+		
+		if( childGroup !=null && childGroup.getElementCount() > 0)
+		{
+		      addGroup(childGroup);
+		}
+		CognosReportHelper.sop("******************************************************END ***********************************"+gout.getElementCount()+"-->."+ bomList.size());
+	
+	CognosReportHelper.sop("******************************************************Final END ***********************************"+gout.getElementCount());
+%>
+<ie:webject name="Copy-Group" type="GRP">
+    <ie:param name="GROUP_IN" data="out"/>
+    <ie:param name="GROUP_OUT" data="NewBOM"/>
+</ie:webject>
+
+<%
+ 
+		if(BOM.equals("true") && bomList.size() > 0)
+	{	
+	
+		for(int k=0;k< bomList.size();k++)
+		{
+			Group childBomGroup=(Group)bomList.get(k);
+			
+			
+			if(BOM.equals("true") && childBomGroup !=null && childBomGroup.getElementCount() > 0)
+				{
+				
+				CognosReportHelper.sop("******************************************************Child**********"+childBomGroup.getElementCount()+"-->>"+k);
+				
+					%>
+					         
+                 <ie:webject name="Join-Groups" type="GRP">
+					<ie:param name="GROUP_IN" data="out"/>
+					<ie:param name="GROUP_IN" data="ChildBOMParts"/>
+					<ie:param name="GROUP_OUT" data="RevisedBOM"/>
+					<ie:param name="JOINBY" data="PARENTPARTOBID"/>
+					<ie:param name="JOINBY" data="CHILDOBID"/>
+				</ie:webject>                                                              
+				<%}
+		}
+	
+
+Group revisedBOM=getGroup("RevisedBOM");
+
+Group revisedBOM1=getGroup("NewBOM");
+CognosReportHelper.sop("******************************************************RevisedBOM ***********************************"+revisedBOM.getElementCount());
+CognosReportHelper.sop("******************************************************NewBOM**********************************"+revisedBOM1.getElementCount()+"-->>"+compareBOM);
+
+for(int k=0; k <  compareBOM.size();k++ )
+{ 
+        String count=(String)  compareBOM.get(k);					
+        int countRemove=Integer.parseInt(count);
+        Element groupElement = revisedBOM1.getElementAt(countRemove);
+        if( groupElement !=null)
+        {	                        
+                groupElement.removeAtt("BOMReportName");
+         }
+            
+}
+
+CognosReportHelper.sop("******************************************************Final END ***********************************"+revisedBOM1.getElementCount());
+//revisedBOM.toXML(new java.io.PrintWriter(System.out), true);
+//revisedBOM1.toXML(new java.io.PrintWriter(System.out), true);
+
+
+for(int k=0; k < revisedBOM.getElementCount(); k++ )
+{ 
+    Element gElement = new Element(revisedBOM.getElementAt(k));
+    if(gElement != null)
+    {
+	
+//first text replacement.  change 'INFOWAS' per line item 31
+		String testy = null;
+		if(gElement.getValue("INFOWAS")!=null)
+			testy = gElement.getValue("INFOWAS").toString();
+		if(testy != null)
+		{
+			if(testy.startsWith("QTY"))
+			{
+				testy = testy.substring(4);
+			}
+			else if(testy.startsWith("ITM"))
+			{
+				testy = "ITEM-" + testy.substring(4);
+			}
+			gElement.removeAtt("INFOWAS");
+			gElement.addAtt(new Att("INFOWAS",testy));
+		}
+		
+//second text replacement. change 'STATUS' 'Del' to 'DEL' as per line item 38
+		testy = null;
+		if(gElement.getValue("STATUS")!=null)
+			testy = gElement.getValue("STATUS").toString();
+		if(testy != null)
+		{
+			if(testy.startsWith("Del"))
+			{
+				testy = "DEL";
+				gElement.removeAtt("STATUS");
+				gElement.addAtt(new Att("STATUS", testy));
+			}
+		}
+
+//third text replacement. change 'QTY' to a variable of type 'double'
+		testy = null;
+		if(gElement.getValue("QTY") != null)
+			testy = gElement.getValue("QTY").toString();
+		if(testy != null)
+		{
+			double doubly = Double.parseDouble(testy);
+			gElement.removeAtt("QTY");
+			gElement.addAtt(new Att("QTY", doubly));
+		}
+
+
+		revisedBOM.setElementAt(gElement, k);
+    }
+}
+
+%>
+
+<ie:webject name="Merge-Groups" type="GRP">
+    <ie:param name="GROUP_IN" data="RevisedBOM"/>
+    <ie:param name="GROUP_IN" data="NewBOM"/>
+    <ie:param name="GROUP_OUT" data="NewBOM"/>
+</ie:webject>
+<%
+
+}
+}
+catch (Exception e5)
+{ // begin catch, error getting ecn resulting objects
+
+	CognosReportHelper.sop("E5 exception in ECNSummaryReportQuery.xml getting resulting objects");
+	e5.printStackTrace();
+
+} 
+%>
+<ie:webject name="Return-Groups" type="GRP">
+    <ie:param name="GROUP_IN"  data="NewBOM"/>
+</ie:webject>

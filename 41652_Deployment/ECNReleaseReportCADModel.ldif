@@ -1,0 +1,4 @@
+dn: ptcCommandDelegateName=ECN__Release_Resulting_CADModel, ptcWindchillTypeId=com.ptc.windchill.enterprise.report.ReportTask, ptcRepositoryType=windchill, dc=ptc, dc=com, cn=configuration, cn=Windchill_10.1, o=ptc
+ptcCommandSourceCodeURL: /ext/carrier/wc/cognos/reports/ECNReleaseResultingCADModelQuery.xml
+objectClass: ptcCommandDelegateDefinition
+ptcCommandDelegateName: ECN__Release_Resulting_CADModel
