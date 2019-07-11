@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listofactions SYSTEM "actions.dtd">
+<listofactions>
+		
+	<objecttype name="carrier" class="" resourceBundle="ext.carrier.common.commonResource">
+      <!--Akhila ESR 43818(Disable WhosOn Chat)-->
+		<!--<action name="whosonChat">-->
+			<!-- ESR:24270 Online chat link is not working. Below link is modified.-->
+			<!--command windowType="popup"url="https://hostedusa5.whoson.com/chat/chatstart.htm?domain=www.windchillsb.carrier.utc.com"/-->
+            <!--<command windowType="popup" url="/netmarkets/jsp/ext/carrier/wc/chat/chatLink.jsp"/>-->
+        <!--</action>-->
+		<action name="latestReleaseSearchReport">
+			<!-- ESR:20560 Latest Released Search Shortcut-->			
+            <command windowType="popup" url="/netmarkets/jsp/ext/carrier/wc/cognos/report/latestReleaseSearchReport.jsp"/>
+        </action>
+		
+		<!-- Added for ESR:25687 "Link to ESR from Windchill" -->
+		<!--Added for Email to ESR link under Help link in Quick Link-->
+		<action name="emailToESR">
+            <command onClick="document.location.href='mailto:esr@carrier.utc.com?subject=New Support Request'" />
+		</action>
+		<!--End for Email to ESR link under Help link in Quick Link-->
+		
+		<!-- Added for ESR Support link under Help link in Quick Link -->
+		<action name="esrlink">
+			<!-- ESR Support -->
+           <command windowType="popup" url="http://esr.carrier.utc.com"/>			
+        </action>
+		
+		<action name="ptcUniversity">
+			<!-- ESR:20560 Latest Released Search Shortcut-->			
+            <command windowType="popup" url="/netmarkets/jsp/ext/carrier/wc/ptcUnivLink/ptcUnivLink.jsp"/>
+        </action>
+	</objecttype>
+	
+	
+	
+	<objecttype class="wt.change2.WTChangeOrder2" name="changeNotice">
+		<action name="create" uicomponent="CREATE_CHANGENOTICE">
+			<command class="com.ptc.windchill.enterprise.change2.forms.processors.CreateChangeNoticeFormProcessor" method="execute" windowType="popup"/>
+			<includeFilter name="sandboxSharingValidationSimple"/>
+			<includeFilter name="restrictGuestMembers"/>
+			<title>
+				New Change Notice
+			</title>
+			<tooltip>
+				New change notice
+			</tooltip>
+			<label>
+				New Change Notice
+			</label>
+			<icon>
+				netmarkets/images/chgnotice_create.gif
+			</icon>
+			<moreurlinfo>
+				width=1280,height=800,scrollbars=no
+			</moreurlinfo>
+		</action>
+	</objecttype>
+	
+	<objecttype name="part" class="wt.part.WTPart" resourceBundle="com.ptc.windchill.enterprise.part.partResource">
+		<action name="createPartFromFolder" uicomponent="CREATE_PART" ajax="row">
+			<command class="com.ptc.windchill.enterprise.part.forms.CreatePartAndCADDocFormProcessor" method="execute" windowType="popup" 
+                 url="/netmarkets/jsp/part/createPartWizard.jsp?invokedfrom=folder"/>
+			<includeFilter name="showNewActionPreValidation"/>
+		</action>
+	</objecttype>
+
+<!-- Entry added for Team Validation in CCD Change Objects-->
+  <objecttype name="object" class="wt.fc.Persistable">
+        <action name="defineItemAttributesWizStep" afterVK="validateSubmission" id="defineItemAttributesWizStep" preloadWizardPage="false" required="true" resourceBundle="com.ptc.core.ui.componentRB">
+                  <component name="defineItemAttributesWizStep" typeBased="true" windowType="wizard_step"/>
+        </action>
+  </objecttype>
+                            
+<!-- END: Team Validation for CCD Change Objects-->
+</listofactions>
