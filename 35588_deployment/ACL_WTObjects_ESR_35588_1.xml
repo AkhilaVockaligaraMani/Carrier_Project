@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE OrganizationConfig SYSTEM "standardX10.dtd">
+
+<!-- 
+windchill wt.load.LoadFromFile -d D:\apps\ptc\Windchill_10.1\Wind
+chill\ext\ACL_WTObjects_ESR_35588.xml -u wcadmin -p wcadmin -CONT_PATH "/wt.inf.container.OrgContainer=Carrier"-->
+
+<OrganizationConfig>
+   <AccessControlRule>
+      <domainName>/Default/PDM</domainName>
+      <externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+    <lifecycleState>OBSOLETE</lifecycleState>
+      <WTPrincipalReference isInternal="true">
+         <groupName>OBSERVERLITE</groupName>
+         <groupType>DynamicRole</groupType>
+      </WTPrincipalReference>
+      <grantPermissionSet>
+         <AccessPermissionSet>
+            <permissionField name="READ"/>
+         </AccessPermissionSet>
+       </grantPermissionSet>
+   </AccessControlRule>
+   <AccessControlRule>
+      <domainName>/Default/PDM</domainName>
+      <externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+    <lifecycleState>OBSOLETE</lifecycleState>
+      <WTPrincipalReference isInternal="true">
+         <groupName>OBSERVER</groupName>
+         <groupType>DynamicRole</groupType>
+      </WTPrincipalReference>
+      <grantPermissionSet>
+         <AccessPermissionSet>
+            <permissionField name="READ"/>
+         </AccessPermissionSet>
+       </grantPermissionSet>
+   </AccessControlRule>
+</OrganizationConfig>
+
+  

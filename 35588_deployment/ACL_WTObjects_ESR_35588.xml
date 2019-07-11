@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE OrganizationConfig SYSTEM "standardX20.dtd">
+
+<!-- windchill wt.load.LoadFromFile -d /apps/ptc/Windchill/loadFiles/ext/teamMembers/wc/acls/PDMLinkAccessControlRules.xml -u wcadmin -p wcadmin -CONT_PATH \"/wt.inf.container.OrgContainer=teamMembers\" -->
+
+<OrganizationConfig>
+
+	<!--START 35588 : Deny DOWNLOAD access to WTOBJECTS for roles OBSERVER,OBSERVERLITE; Grant READ access to WTOBJECTS for roles OBSERVER,OBSERVERLITE-->
+
+		 <AccessControlRule>
+      <domainName>/Default</domainName>
+      <externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+    <lifecycleState>OBSOLETE</lifecycleState>
+      <WTPrincipalReference isInternal="true">
+         <groupName>OBSERVERLITE</groupName>
+         <groupType>DynamicRole</groupType>
+      </WTPrincipalReference>
+      <grantPermissionSet>
+         <AccessPermissionSet>
+            <permissionField name="READ"/>
+         </AccessPermissionSet>
+       </grantPermissionSet>
+   </AccessControlRule>
+   
+   <AccessControlRule>
+      <domainName>/Default</domainName>
+      <externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+    <lifecycleState>OBSOLETE</lifecycleState>
+      <WTPrincipalReference isInternal="true">
+         <groupName>OBSERVER</groupName>
+         <groupType>DynamicRole</groupType>
+      </WTPrincipalReference>
+      <grantPermissionSet>
+         <AccessPermissionSet>
+            <permissionField name="READ"/>
+         </AccessPermissionSet>
+       </grantPermissionSet>
+   </AccessControlRule>
+   
+	<AccessControlRule>
+		<domainName>/Default</domainName>
+		<externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+		<lifecycleState>OBSOLETE</lifecycleState>
+		<WTPrincipalReference isInternal="true">
+        <groupName>OBSERVERLITE</groupName>
+        <groupType>DynamicRole</groupType>
+		</WTPrincipalReference>
+		<absoluteDenyPermissionSet><AccessPermissionSet>
+		<permissionField name="DOWNLOAD"/>
+		</AccessPermissionSet></absoluteDenyPermissionSet>
+	</AccessControlRule>
+	
+	<AccessControlRule>
+		<domainName>/Default</domainName>
+		<externalTypeId>WCTYPE|wt.fc.WTObject</externalTypeId>
+		<lifecycleState>OBSOLETE</lifecycleState>
+		<WTPrincipalReference isInternal="true">
+        <groupName>OBSERVER</groupName>
+        <groupType>DynamicRole</groupType>
+		</WTPrincipalReference>
+		<absoluteDenyPermissionSet><AccessPermissionSet>
+		<permissionField name="DOWNLOAD"/>
+		</AccessPermissionSet></absoluteDenyPermissionSet>
+	</AccessControlRule>
+
+
+	
+	<!--END 35588 -->
+	
+</OrganizationConfig>

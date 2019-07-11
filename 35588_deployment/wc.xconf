@@ -1,0 +1,15 @@
+<!--ESR 35588 -->
+
+<Property name="representationcontentdownload.performrepresentableaccesscheck.readonly" overridable="true"
+             targetFile="codebase/wvs.properties"
+             value="false"/>
+			 
+<Property name="User.Role" overridable="true"
+             targetFile="codebase/ext/carrier/wc/datautility/AccessControlRole.properties"
+             value="OBSERVERLITE,OBSERVER"/>
+			 
+<Property name="LifeCycle.State" overridable="true"
+             targetFile="codebase/ext/carrier/wc/datautility/AccessControlRole.properties"
+             value="OBSOLETE"/>	
+
+<!-- END of Properties for ESR 35588 -->			 
