@@ -1,0 +1,672 @@
+<!--
+File: cmuECRmtgAgendaQuery.xml
+
+Description:	This InfoEngine query gets all RCS ECR at Pending Approval or On Hold state for [Split and Fan Coils] and [SRT] Containers for a meeting agenda.
+
+Input: 	None
+Output: Details of ECR: CarrierLogo,ecrURL,name,state,number,description,obid,containerName,iBall,rlcsPlantsAffected,formattedObid
+
+Writen By: Akhila V Mani 2015-09-24 For ESR 40414(New report)
+
+Revision History:
+NA
+
+-->
+
+<%@page language="java" session="false"%>
+<%@taglib uri="http://www.ptc.com/infoengine/taglib/core" prefix="ie"%>
+<%@page import="java.util.*"%>
+<%@page import="wt.adapter.BasicWebjectDelegate"%>
+<%@page import="wt.workflow.work.WorkItem"%>
+<%@page import="com.ptc.windchill.enterprise.workflow.WorkflowDataUtility"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.TextDisplayComponent"%>
+<%@page import="com.ptc.core.components.rendering.guicomponents.DateDisplayComponent"%>
+<%@page import="java.beans.XMLDecoder"%>
+<%@page import="java.io.*"%>
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
+<%@page import="wt.services.applicationcontext.implementation.ServiceProperties"%>
+<%@page import="wt.util.WTProperties"%>
+<%@page import="ext.carrier.wc.cognos.BSSLCStateReportHelper"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportRB"%>
+<%@page import="ext.carrier.wc.cognos.CognosReportHelper"%>
+<%@page import="ext.carrier.wc.wtChangeRequest.CarrierWTChangeRequestHelper"%>
+<%@page import="wt.change2.WTChangeRequest2"%>
+<%@page import="wt.fc.*"%>
+<%@page import="wt.fc.QueryResult"%>
+<%@page import="wt.workflow.engine.WfEngineHelper"%>
+<%@page import="wt.workflow.engine.WfProcess"%>
+<%@page import="wt.workflow.engine.WfActivity"%>
+<%@page import="wt.workflow.definer.WfProcessTemplate"%>
+<%@page import="wt.workflow.definer.WfDefinerHelper"%>
+<%@page import="wt.workflow.definer.WfTemplateObject"%>
+<%@page import="wt.workflow.definer.WfAssignedActivityTemplate"%>
+<%@page import="wt.workflow.work.*"%>
+<%@page import="wt.workflow.work.WfAssignment"%>
+<%@page import="wt.workflow.work.WorkItem"%>
+<%@page import="wt.workflow.work.WorkItemLink"%>
+<%@page import="wt.workflow.work.WfAssignedActivity"%>
+<%@page import="wt.workflow.work.WfAssignmentState"%>
+<%@page import="wt.util.WTException"%>
+
+<!--com.infoengine.delegate.def
+@repositoryType com.ptc.windchill
+@delegateName RLCS_ECR_Meeting_Agenda_Report
+@typeId com.ptc.windchill.enterprise.report.ReportTask
+@installDelegate true
+-->
+
+<!--com.infoengine.soap.rpc.def
+Queries for all Projects available to the user
+{resourceBundle: com.ptc.hulseware.reports.comTycoProjectsRB}
+@return INFOENGINE_GROUP ${out} {columns: java.lang.String CarrierLogo,java.lang.String iBall,java.lang.String editIcon,java.lang.String ecrURL,java.lang.String name,java.lang.String description,java.lang.String state.state,java.lang.String number,java.lang.String obid,java.lang.String containerName,java.lang.String rlcsPlantsAffected, java.lang.String formattedObid, java.lang.String formattedTaskURLInfo, java.lang.String formattedContainerRef, java.lang.String currentTaskUrl, java.lang.String creatorFullName}
+-->
+
+<%
+
+try
+{ // begin try, getting ECR details
+
+	// define the properties file getting service properties
+	java.util.Properties properties = ServiceProperties.getServiceProperties("WTServiceProviderFromProperties");
+
+	// get the value of DEBUG from the properties file
+	boolean DEBUG = Boolean.valueOf(properties.getProperty("ext.carrier.wc.cognos.reports.DEBUG"));
+
+	// get unreleased lifecycle states and container names from properties file
+	StringTokenizer lifecycleArgs = new StringTokenizer(properties.getProperty("ext.carrier.wc.cognos.reports.RLCSecrMtgReport.UnreleasedLCStates"), "|");
+	StringTokenizer containerArgs = new StringTokenizer(properties.getProperty("ext.carrier.wc.cognos.reports.CMUecrMtgReport.CONTAINERS"), "|");
+	
+	// initialize whereclause and contclause
+	String whereclause = "";
+	String contclause = "";
+	
+
+	if(lifecycleArgs.countTokens() >= 1)
+	{ // begin if, there is at least one token in lifecycleArgs
+
+		if(lifecycleArgs.countTokens() == 1)
+		{ // begin if, there is only one token in lifecycleArgs
+
+			// set the whereclause for one lifecycle state
+			whereclause = "(state.state = '" + (String)lifecycleArgs.nextElement() + "')";
+
+		} // end if, there is only one token in lifecycleArgs
+		else
+		{ // begin else, there is more than one token in lifecycleArgs
+
+			// set the whereclause for the first lifecycle state
+			whereclause = "(state.state = '" + (String)lifecycleArgs.nextElement() + "'";
+
+			while(lifecycleArgs.hasMoreTokens())
+			{ // begin while, creating whereclause of unreleased lifecycle states
+
+				if(DEBUG) System.out.println("In the while loop, processing lifecycle argues.");
+
+				// append the next lifecycle arg to the existing whereclause
+				whereclause = whereclause + " | state.state = '" + (String)lifecycleArgs.nextElement() + "'";
+
+			} // end while, creating whereclause of unreleased lifecycle states
+
+			// close out there whereclause
+			whereclause = whereclause + ")";
+
+		} // end else, there is more than one token in lifecycleArgs
+
+	} // end if, there is at least one token in lifecycleArgs
+
+	
+	if(containerArgs.countTokens() >= 1)
+	{ // begin if, there is at least one token in containerArgs
+
+		if(containerArgs.countTokens() == 1)
+		{ // begin if, there is only one token in containerArgs
+
+			// set the contclause for one container
+			contclause = "(containerName = '" + (String)containerArgs.nextElement() + "')";
+
+		} // end if, there is only one token in containerArgs
+		else
+		{ // begin else, there is more than one token in containerArgs
+
+			// set the contclause for the first container
+			contclause = "(containerName = '" + (String)containerArgs.nextElement() + "'";
+
+			while(containerArgs.hasMoreTokens())
+			{ // begin while, creating contclause for container
+
+				if(DEBUG) System.out.println("In the while loop, processing container argues.");
+
+				// append the next container arg to the existing contclause
+				contclause = contclause + " | containerName = '" + (String)containerArgs.nextElement() + "'";
+
+			} // end while, creating contclause for container
+
+			// close out there contclause
+			contclause = contclause + ")";
+
+		} // end else, there is more than one token in containerArgs
+
+	} // end if, there is at least one token in containerArgs
+
+	whereclause=whereclause + "&"+contclause;
+	System.out.println("----------------Final   whereclause------------------"+whereclause);
+	if(DEBUG) System.out.println("The whereclause is: " + whereclause);
+	
+
+%>
+<!-- 	This webject get the server information
+		Return: Group properties
+-->
+<ie:webject name="Get-Properties" type="MGT">
+    <ie:param name="AUTHORIZATION" data="${@SERVER[]authorization[]}"/>
+    <ie:param name="ATTRIBUTE" data="wt.federation.ie.VMName"/>
+    <ie:param name="GROUP_OUT" data="properties"/>
+</ie:webject>
+
+<!-- 	This webject get the ECR information and returns iBall,ecrURL,name,state.state,containerName,number,description,obid,rlcsPlantsAffected
+		Input: the server information
+		Return: Group out
+-->
+<ie:webject name="Query-Objects" type="OBJ">
+    <ie:param name="INSTANCE"		data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+    <ie:param name="ATTRIBUTE"		data="editIcon,iBall,ecrURL,name,state.state,containerReference^containerInfo.name,number,description,obid,rlcsPlantsAffected,formattedObid,formattedTaskURLInfo,formattedContainerRef,currentTaskUrl" delim=","/>
+    <ie:param name="unformatted"	data="java.util.Date,java.sql.Timestamp,java.lang.Boolean,java.lang.Double,java.lang.Integer" delim=","/>
+    <ie:param name="TYPE"			data="com.utc.carrier.projectlink.UTC.RLCSECR"/>
+    <ie:param name="WHERE" 			data="<%=whereclause%>"/>
+    <ie:param name="SORTBY" 		data="number"/>
+    <ie:param name="GROUP_OUT" 		data="out"/>
+</ie:webject>
+
+<%
+	// get the result of the query
+	Group gout = getGroup("out");
+	
+	// initialize path to windchill
+	String strWtInstance = "";
+	String CarrierLogo = "";
+	String iBall = "";
+	String editIcon = "";
+	
+	try
+	{ // begin try, getting the server url properties
+
+		// define prop getting local properties
+		WTProperties prop = WTProperties.getLocalProperties();
+
+		// get the windchill server details
+	    strWtInstance = prop.getProperty("wt.server.codebase");
+	
+	    // get Carrier logo
+	    CarrierLogo = properties.getProperty("ext.carrier.wc.cognos.reports.ECNSummaryReport.Carrier_Logo");
+
+		// get iBall icon
+		iBall = properties.getProperty("ext.carrier.wc.cognos.reports.RLCSecrMtgReport.iBall_Icon");
+
+		// get edit icon
+		editIcon = properties.getProperty("ext.carrier.wc.cognos.reports.RLCSecrMtgReport.edit_Icon");
+		
+		
+	} // end try, getting the server url properties
+	catch(Exception e2)
+	{
+		System.out.println(" Exception in CMUECRmtgAgendaQuery.xml getting system properties");
+		e2.printStackTrace();
+	}
+
+	if(DEBUG) System.out.println("The number of ECRs in group out is: " + gout.getElementCount());
+	
+	
+	for (int i=0; i < gout.getElementCount(); i++ )
+	{ // begin for, process each element
+
+		if(DEBUG) System.out.println("In the for loop, processing each element. At counter: " + i);
+
+		// get element from group out at position i
+	    Element e = gout.getElementAt(i);
+
+		// get the formattedObid from group out
+	    String formattedObid = (String)gout.getAttributeValue(i,"obid");
+
+		// get the number from group out
+	    String ecrNumber = (String)gout.getAttributeValue(i,"number");
+
+		// create an instance of the CarrierWTChangeRequestHelper class
+		CarrierWTChangeRequestHelper ecrHelper1 = new CarrierWTChangeRequestHelper();
+
+		// get the ecr
+		WTChangeRequest2 ecr1 = ecrHelper1.getECR(ecrNumber);	
+
+		// get the ECR creators full name
+		String creatorFullName = ecr1.getCreatorFullName();
+
+		e.addAtt (new Att ("creatorFullName", creatorFullName));
+		
+		
+		// get last index of : from ecrObid
+	    int cidx = formattedObid.lastIndexOf(":");
+
+		// set ecrObid = substring of ecrObid from 0 to cidx
+	    formattedObid = formattedObid.substring(0 , cidx);
+
+		// add formattedObid to the current element
+    	e.addAtt (new Att ("formattedObid",formattedObid));
+
+		// initialize ECR url
+    	String ecrURL = "";
+
+    	if (!formattedObid.equals(""))
+    	{ // begin if, there is an associated ECR
+        
+        	if (DEBUG) System.out.println("The ECR OBID is: " + formattedObid);
+
+        	try
+        	{ // begin try, getting the ecr details page URL
+
+            	ecrURL = BSSLCStateReportHelper.getDetailsPageURL(formattedObid);
+
+        	} // end try, getting the ecr details page URL
+        	catch (java.lang.Exception e3)
+        	{
+            	System.out.println("ERROR: Gettting ECR URL: ");
+				e3.printStackTrace();
+        	}
+
+    	} // end if, there is an associated ECR
+
+		// get the containerReference for formatting
+	    String formattedContainerRef = (String)gout.getAttributeValue(i,"containerReference");
+
+		// get last index of : from ecrObid
+	    cidx = formattedContainerRef.lastIndexOf(":");
+
+		// set ecrObid = substring of ecrObid from 0 to cidx
+	    formattedContainerRef = formattedContainerRef.substring(0 , cidx);
+
+    	// add formattedContainerRef to the current element
+    	e.addAtt (new Att ("formattedContainerRef",formattedContainerRef));
+
+    	// add ecrURL to the current element
+    	e.addAtt (new Att ("ecrURL",ecrURL));
+
+		// add Carrier logo to the current element
+    	e.addAtt (new Att ("CarrierLogo",strWtInstance + CarrierLogo));
+
+		// add iBall icon to the current element
+    	e.addAtt (new Att ("iBall",strWtInstance + iBall));
+
+		// add edit icon to the current element
+    	e.addAtt (new Att ("editIcon",strWtInstance + editIcon));
+/*
+		// set whereclause to get the work item for this ECR with the status of PONTENTIAL.
+		// this will get the current active task in the ECR workflow.
+	    String whereClause = "(pbo=" + formattedObid + ")&(status='POTENTIAL')";
+	    String whereClause = "(pbo=" + formattedObid + ")";
+	    if (DEBUG) System.out.println ("using whereclause for ECR Review: " + whereClause);
+%>
+
+<!--
+This webject take the formatted ecr Obid and get information from the ECR Review task in the workflow
+
+Input:	formatted ECR obid
+Output: work item Obid
+-->
+        <ie:webject name="Query-Objects" type="OBJ">
+        <ie:param name="instance"              data="${properties[0]wt.federation.ie.VMName[0]}" valueSeparator=";" delim=";"/>
+        <ie:param name="attribute"             data="*" 
+                                               delim="," />
+        <!-- these require extra logical attributes entries to work -->
+        <ie:param name="attribute"             data="parentProcessRef,pbo,name" 
+                                               delim="," />
+        <ie:param name="container_ref"         data="${@FORM[]container_ref[]}" />
+        <ie:param name="session_id"            data="${@FORM[]session_id[0]}" />
+        <ie:param name="format"                data="${@FORM[]format[]}" 
+                                               default="true" />
+        <ie:param name="UNFORMATTED"           data="${@FORM[]dca_unformat[*]}" 
+                                               delim=";" 
+                                               default="java.sql.Timestamp"/>
+        <ie:param name="next_op"               data="${@FORM[]dca_next_operation[]}" />
+        <ie:param name="include_descriptors"   data="${@FORM[]dca_include_descriptors[]}" 
+                                               default="true" />
+        <ie:param name="include_constraints"   data="${@FORM[]dca_include_constraints[]}" 
+                                               default="false" />
+        <ie:param name="include_args"          data="${@FORM[]include_args[]}" 
+                                               default="false" />
+        <ie:param name="group_out"             data="WiQuery" />
+        <ie:param name="type"                  data="wt.workflow.work.WorkItem" />
+        <ie:param name="where"                 data="<%=whereClause%>" />
+    </ie:webject>
+<%
+
+		// initialize taskURLPathInfo
+	    String taskURLPathInfo = "";
+		Group wig = null;
+
+	    try
+	    { // begin try, processing workitem group
+
+	        wig = getGroup("WiQuery");
+
+			if(DEBUG) System.out.println("The number of instances returned from work item query is: " + wig.getElementCount());
+
+	    } // end try, processing workitem group
+	    catch (Exception e4)
+	    { // begin catch
+	        System.out.println ("Exception! in CMUECRmtgAgendaQuery.xml task getting workflow attributes.");
+			e4.printStackTrace();
+	    } // end catch
+
+		// initialize work item obid = null
+		String wiObid = "";
+
+		if(wig.getElementCount() > 0)
+		{ // begin if, there is at least 1 element in the WiQuery
+
+			if(DEBUG) System.out.println("Inside the if there is at least one element in the WiQuery");
+
+	        for (int m=0; m<wig.getElementCount();m++)
+	        { // begin for, processing items from wi group
+	
+				// get work item element at position m
+	            // Element wie = wig.getElementAt(m);
+	
+				// get work item obid from current element
+	            wiObid = (String)wig.getAttributeValue(m,"obid");
+	
+				if(DEBUG) System.out.println("The wiObid is: " + wiObid);
+	
+				// get the taskURLPathInfo for formatting
+	    		taskURLPathInfo = (String)wig.getAttributeValue(m,"taskURLPathInfo");
+	
+				if(DEBUG) System.out.println("The taskURLPathInfo is: " + taskURLPathInfo);
+	
+			} // end for, processing items from wi group
+	
+			if(DEBUG) System.out.println("The taskURLPathInfo is: " + taskURLPathInfo);
+	
+			// add the work item obid to the current element
+			e.addAtt (new Att ("wiObid",wiObid));
+	
+			// get last index of & from taskURLPathInfo
+		    int ampIdx = taskURLPathInfo.lastIndexOf("&");
+	
+			// set taskURLPathInfo = substring of ecrObid from 0 to ampIdx
+		    String formattedTaskURLInfo = taskURLPathInfo.substring(0 , ampIdx);
+	
+			// get the length of the formattedTaskURLInfo
+		    int length = formattedTaskURLInfo.length();
+	
+			// get last index of & from formattedTaskURLInfo
+		    ampIdx = formattedTaskURLInfo.lastIndexOf("&");
+	
+			// set formattedTaskURLInfo = substring of ecrObid from ampIdx + 1 to length
+		    formattedTaskURLInfo = taskURLPathInfo.substring(ampIdx+1 , length);
+	
+	    	// add formattedContainerRef to the current element
+	    	e.addAtt (new Att ("formattedTaskURLInfo",formattedTaskURLInfo));
+	
+			// create the current task URL
+			String currentTaskUrl = strWtInstance + "/servlet/TypeBasedIncludeServlet?" + formattedTaskURLInfo + "&u8=1";
+	
+			// add currentTaskUrl to the current element
+	    	e.addAtt (new Att ("currentTaskUrl",currentTaskUrl));
+
+		} // end if, there is at least 1 element in the WiQuery
+*/
+
+		try
+		{ // begin try, getting work item information
+
+			// create an instance of the CarrierWTChangeRequestHelper class
+			CarrierWTChangeRequestHelper ecrHelper = new CarrierWTChangeRequestHelper();
+
+			// get the ecr
+			WTChangeRequest2 ecr = ecrHelper.getECR(ecrNumber);
+
+			// get the locale
+        	java.util.Locale locale = java.util.Locale.getDefault();
+
+			// get the workflow(s) associated with the ecr
+			QueryResult  assocProcessResult = WfEngineHelper.service.getAssociatedProcesses(ecr, null,ecr.getContainerReference());
+
+			if (DEBUG) System.out.println("assocProcessResult size:; "+assocProcessResult.size());
+
+			// initialize workflow to null
+			WfProcess process = null;
+
+			if(assocProcessResult.hasMoreElements())
+			{ // begin if, there is associated process(es)
+
+				// get the first workflow from the process query
+				process = (WfProcess)assocProcessResult.nextElement();
+
+			 	if (DEBUG) System.out.println("process name is: "+ process.getName());
+
+			 	if(!((process.getName()).endsWith("Change Request Process")))
+				{ // begin if, the current process is the initial change request workflow
+
+					// get the next workflow process from process query
+					process = (WfProcess)assocProcessResult.nextElement();
+
+			 	} // end if, the current process is the initial change request workflow
+
+				if (DEBUG) System.out.println("In try, getting Work Item with status of POTENTIAL. process name is: "+ process.getName());
+
+			} // end if, there is associated process(es)
+
+	
+			// get the process template from the current process
+		 	WfProcessTemplate processTemplate = (WfProcessTemplate)process.getTemplate().getObject();
+	
+			// get the executed activity steps from the process
+			Enumeration executedActivityEnum = WfEngineHelper.service.getProcessSteps(process, null);
+	
+			// set found current task to false
+			boolean foundCurrentTask = false;
+
+			while(executedActivityEnum.hasMoreElements() && foundCurrentTask == false)
+			{ // begin while, loop thru all the assignments to check their status
+	
+				if(DEBUG) System.out.println("In while loop, getting assignment status");
+	
+				// get an activity from the enumeration
+				WfActivity activity = (WfActivity)executedActivityEnum.nextElement();
+	
+				if(DEBUG) System.out.println("In try getting WorkItem of state POTENTIAL. Activity name is: " + activity.getName());
+	
+		 		if(activity instanceof WfAssignedActivity)
+				{ // begin if, the current activity is of type WfAssignedActivity
+	
+					if(DEBUG) System.out.println("HELLO..... got an instance of WfAssignedActivity");
+	
+					// get the assigned activity from the activity
+					WfAssignedActivity assignedActivity = (WfAssignedActivity)activity;
+	
+					if (DEBUG) System.out.println("assignedActivity name is = " + assignedActivity.getName());
+	
+					// the the assigments for the assignedActivity
+					Enumeration assignmentEnum = assignedActivity.getAllAssignments();
+	
+					while(assignmentEnum.hasMoreElements() && foundCurrentTask == false)
+					{ // begin while, loop thru all the assignments to check their status
+	
+						WfAssignment wfAssignment = (WfAssignment)assignmentEnum.nextElement();
+	
+						QueryResult wiEnum = null;
+	
+						try
+						{ // begin try, getting workItem(s) for the given WfAssignment
+
+							wiEnum = PersistenceHelper.manager.navigate(wfAssignment,"workItem",Class.forName("wt.workflow.work.WorkItemLink"),true);
+
+						} // end try, getting workItem(s) for the given WfAssignment
+						catch(WTException we)
+						{
+							System.out.println("Exception caught in CMUECRmtgAgendaQuery.xml getting workItem enumeration");
+							we.printStackTrace();
+						}
+	
+						if(DEBUG) System.out.println("The number of workItems in current wiEnum is: " + wiEnum.size());
+	
+						while(wiEnum.hasMoreElements())
+						{ // begin while, workItem enum has more elements, find the one with status of POTENTIAL
+							WorkItem wi = (WorkItem)wiEnum.nextElement();
+		
+							if(wi.getStatus() == WfAssignmentState.POTENTIAL)
+							{ // begin if, the task status is potential
+		
+								if(DEBUG) System.out.println("Inside the if, the task status is POTENTIAL");
+								foundCurrentTask = true;
+		
+								String taskURLPathInfo = wi.getTaskURLPathInfo();
+		
+								if(DEBUG) System.out.println("The workIem URL reference is: " + taskURLPathInfo);
+
+								// get last index of & from taskURLPathInfo
+							    int ampIdx = taskURLPathInfo.lastIndexOf("&");
+	
+								// set taskURLPathInfo = substring of ecrObid from 0 to ampIdx
+		    					String formattedTaskURLInfo = taskURLPathInfo.substring(0 , ampIdx);
+	
+								// get the length of the formattedTaskURLInfo
+		    					int length = formattedTaskURLInfo.length();
+	
+								// get last index of & from formattedTaskURLInfo
+		    					ampIdx = formattedTaskURLInfo.lastIndexOf("&");
+	
+								// set formattedTaskURLInfo = substring of ecrObid from ampIdx + 1 to length
+		    					formattedTaskURLInfo = taskURLPathInfo.substring(ampIdx+1 , length);
+	
+								// create the current task URL
+								String currentTaskUrl = strWtInstance + "/servlet/TypeBasedIncludeServlet?" + formattedTaskURLInfo + "&u8=1";
+	
+								// add currentTaskUrl to the current element
+	    						e.addAtt (new Att ("currentTaskUrl",currentTaskUrl));
+
+							} // end if, the ECR Review task is complete
+		
+						} // end while, workItem enum has more elements, find the one with status of POTENTIAL
+	
+					} // end while, loop thru all the assignments to check their status
+	
+				} // end if, the templateObject is an instance of WfAssignedActivityTemplate, check to see if it's the active task
+
+			} // end while, loop thru all the assignments to check their status
+
+		} // end try, getting work item information
+		catch ( wt.util.WTException e3)
+		{
+			System.out.println ("E3 Exception in CMUECRQuery.xml getting workflow attributes.");
+			e3.printStackTrace();
+		}
+
+		// Loop through all attributes on this element and do any attribute by attribute processing required
+	    Enumeration atts = e.getAtts();
+	    
+	    // To deal with an issue where multivalued attributes are being returned more then once in the same element (one with a single value
+	    // and one with multiple values) we will keep all attributes in this HashMap by their name. If an attribute is already in the map preference
+	    // will be given to the same attribute with multiple values
+	    HashMap<String,Att> elementAttributes = new HashMap();
+	    
+	    while ( atts.hasMoreElements() )
+	    { // begin while, more attributes exist
+	        Att a = (Att)atts.nextElement();
+	        String attName = a.getName();
+	      
+	        if (DEBUG) System.out.println("Current Attribute: " + attName);
+	      
+	        // if the hashmap doesnt contain the current attribute then add it
+	        if ( ! elementAttributes.containsKey(attName) )
+	        {
+	            elementAttributes.put(attName , a);
+	        }
+	      
+	        // Some attributes are multivalued attributes
+	        // Cognos will only be passed the first value, so if there is more then one
+	        // combine them into a single attribute value separated by commas
+	        String[] multivaluedAtts = { "rlcsPlantsAffected" };
+	    	boolean isMultivaluedAtt = false;
+	    	for (int j = 0; j < multivaluedAtts.length; j++)
+	        { // begin for, match current attribute with the list multi-valued attributes.
+	            if (multivaluedAtts[j].equals(attName))
+	            { // begin if, attribute names match
+	                isMultivaluedAtt = true;
+	                if (DEBUG) System.out.println(attName + " has " + a.getValueCount() + " values");
+	                if ( a.getValueCount() > 1 )            // < This comment is to fix JEdit syntax coloring
+	                { // begin if, attribute has more than one value
+	                    if (DEBUG) System.out.println ("Attribute has more than one value: "+ attName);
+	                    
+	                    // always put multivalued atts into the hashmap of atts to keep
+	                    elementAttributes.put(attName , a);
+	                    
+	                    StringBuffer newValue = new StringBuffer();
+	                    Enumeration rawValues = a.getValues();
+	                    newValue.append(rawValues.nextElement());
+	                    while (rawValues.hasMoreElements())
+	                    { // begin while, get the attribute values
+	                        newValue.append(", ");
+	                        newValue.append(rawValues.nextElement());
+	                    } // end while, get the attribute values
+	                    if (DEBUG) System.out.println ("The new value of " + attName + " is " + newValue);
+	                    a.removeAllValues();
+	                    a.addValue(newValue.toString());
+	               } // end if, attribute has more than one value
+	            } // end if, attribute names match
+	        } // end for, match current attribute with the list multi-valued attributes.
+	    
+	        if ( ! isMultivaluedAtt )
+	        {  // begin if, On the form, we want all Boolean values to be displayed as 'Yes' or 'No' . So
+	           // loop through all the values and if they are of type Boolean
+	           // then replace them with a String of the correct value
+	           Object rawValue = a.getRawValue();
+	
+	           if (DEBUG) System.out.println("Raw Value is: " + rawValue);
+	           if ( rawValue instanceof Boolean )
+	           { // begin if, check if the value is of type boolean
+	
+	               if (DEBUG) System.out.println("Is Boolean: " + attName);
+	               String newValue = "No";
+	               if ( rawValue != null && rawValue.toString().equals("true"))
+	               {
+	                   newValue = "Yes";
+	               }
+	               Att newAtt = new Att ( attName , newValue );
+	               elementAttributes.put(attName , newAtt);
+	           } // end if, check if the value is of type boolean
+	        } // end if, On the form.....
+	    } // end while, more attributes exist
+	    
+	    // attribute processing is done
+	    // we want to now remove all attributes from the element being processed
+	    e.removeAtts();
+	    
+	    // and now loop through the HashMap entries and put the Atts we are keeping back into the element
+	    for ( Iterator<Att> elementAtts = elementAttributes.values().iterator(); elementAtts.hasNext(); )
+	    { // begin for
+	        e.addAtt ( elementAtts.next() );
+	    } // end for
+
+	} // end for, process each element
+
+} // end try, getting RCS ecr details
+catch (Exception e1)
+{ // begin catch, error getting RCS ecr mtg agenda
+	System.out.println("Exception caught in CMU ECR Meeting Agenda Report Query");
+	e1.printStackTrace();
+} // end catch, error getting RCS ecr mtg agenda
+%>
+<!-- Change group webject to rename container name and ecr creator Name
+	Input: 	Group out
+	Output: Group out with container name and ecr creator name renamed
+-->
+<ie:webject name="Change-Group" type="GRP">
+    <ie:param name="GROUP_IN" data="out" />
+    <ie:param name="RENAME" data="'containerReference^containerInfo.name'='containerName'"/>
+    <ie:param name="RENAME" data="'iterationInfo.creator^name'='creatorName'"/>
+</ie:webject>
+
+<!-- Define the group to be returned to COGNOS
+	GROUP_IN: out
+-->
+<ie:webject name="Return-Groups" type="GRP">
+    <ie:param name="GROUP_IN"           data="out"/>
+</ie:webject>

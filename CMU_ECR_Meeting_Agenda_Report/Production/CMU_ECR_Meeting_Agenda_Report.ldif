@@ -1,0 +1,6 @@
+dn: ptcCommandDelegateName=CMU_ECR_Meeting_Agenda_Report, ptcWindchillTypeId=com.ptc.windchill.enterprise.report.ReportTask, ptcRepositoryType=windchill, dc=ptc, dc=com, cn=configuration, cn=Windchill_10.0, o=ptc
+ptcCommandSourceCodeURL: /ext/carrier/wc/cognos/reports/cmuECRmtgAgendaQuery.xml
+objectClass: top
+objectClass: ptcCommandDelegateDefinition
+ptcCommandDelegateName: CMU_ECR_Meeting_Agenda_Report
+

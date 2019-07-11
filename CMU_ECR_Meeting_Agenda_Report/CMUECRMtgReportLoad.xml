@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE NmLoader SYSTEM "standardX10.dtd">
+<NmLoader>
+    <csvCreateReport handler="com.ptc.windchill.enterprise.report.LoadReport.createReport">
+		<csvname>CMU ECR Meeting Report</csvname>
+		<csvcontainerPath/>
+		<csvdescription>CMU ECR Meeting Report</csvdescription>
+		<csvinputPage></csvinputPage>
+		<csvresourceBundle></csvresourceBundle>
+		<csvuiContext>18</csvuiContext>
+		<csvreadyForUse/>
+		<csvsoapClass/>
+		<csvsoapMethod/>
+		<csvreportTemplateName>CMUECRMtgReport</csvreportTemplateName>
+		<csvreportTemplateContainerPath></csvreportTemplateContainerPath>
+    </csvCreateReport>
+</NmLoader>

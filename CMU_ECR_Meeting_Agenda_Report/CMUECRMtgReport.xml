@@ -1,0 +1,132 @@
+<report xmlns="http://developer.cognos.com/schemas/report/6.0/" expressionLocale="en" ignoreFilterContext="false"><!--!RSU_SPC_INFO_UPGRADE_PERFORMED! !http://developer.cognos.com/schemas/report/3.0/! !http://developer.cognos.com/schemas/report/6.0/! !2012! !3! !31! !22! !1! !11!--><!--RS:8.2-->
+	<modelPath>/content/package[@name='Windchill']/model[@name='2013-02-23T04:45:58.014Z']</modelPath>
+	<layouts>
+		<layout>
+			<reportPages>
+				<page name="Page1" refQuery="Query1">
+					<pageBody>
+						<contents>
+							<repeaterTable across="1" direction="tb-lr" down="5" name="!RSU_NM_repeaterTable!1" refQuery="Query1">
+								<style>
+									<CSS value="border-collapse:collapse;margin-top:4%;margin-bottom:4%"/>
+								<defaultStyles><defaultStyle refStyle="rt"/></defaultStyles></style>
+								<repeaterTableCell>
+									<contents>
+										<textItem><dataSource><staticValue>Product:</staticValue></dataSource><style><CSS value="padding-right:5px;padding-left:5px;font-size:12pt"/></style></textItem><textItem><dataSource><dataItemValue refDataItem="containerName"/></dataSource><style><CSS value="font-size:12pt;font-weight:bold"/></style></textItem>
+									<textItem><dataSource><staticValue>Plants Affected:</staticValue></dataSource><style><CSS value="font-size:12pt;padding-right:5px;padding-left:50px"/></style></textItem><textItem><dataSource><dataItemValue refDataItem="rlcsPlantsAffected"/></dataSource><style><CSS value="font-size:12pt;font-weight:bold"/></style></textItem><list name="!RSU_NM_list!1" refQuery="Query1">
+											
+											
+											
+											<style>
+												<CSS value="border-collapse:collapse;text-align:center;width:100%;margin-right:0%;margin-left:0%;border:1pt solid black"/>
+											<defaultStyles><defaultStyle refStyle="ls"/></defaultStyles></style>
+										<listColumns><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Number</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="number"/></dataSource><reportDrills><reportDrill name="Drill Through1"><drillLabel><dataSource><staticValue/></dataSource></drillLabel><drillTarget method="execute" outputFormat="PDF" sendFilterContext="false" showInNewWindow="true"><reportPath path="/content/package[@name='Windchill']/report[@name='CMU ECR Report']"><XMLAttributes><XMLAttribute name="ReportName" output="no" value="CMU ECR Report"/><XMLAttribute name="class" output="no" value="report"/></XMLAttributes></reportPath><drillLinks><drillLink><drillTargetContext><parameterContext parameter="ECRNumber"/></drillTargetContext><drillSourceContext><dataItemContext refDataItem="number"/></drillSourceContext></drillLink></drillLinks></drillTarget></reportDrill></reportDrills><style><defaultStyles><defaultStyle refStyle="hy"/></defaultStyles></style></textItem></contents><style><CSS value="text-align:center;width:80px;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Details Page</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><HTMLItem>
+																<dataSource>
+																	<dataItemValue refDataItem="iBall"/></dataSource>
+															</HTMLItem>
+															<textItem><dataSource><dataItemValue refDataItem="ecrURL"/></dataSource><style><CSS value="visibility:hidden;display:none"/></style></textItem>
+														</contents><style><CSS value="text-align:center;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Edit</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents>
+														<HTMLItem>
+																<dataSource>
+																	<dataItemValue refDataItem="editIcon"/></dataSource>
+															</HTMLItem>
+															<textItem><dataSource><dataItemValue refDataItem="currentTaskUrl"/></dataSource><style><CSS value="display:none"/></style></textItem></contents><style><CSS value="text-align:center;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Created By</staticValue></dataSource></textItem></contents><style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="creatorFullName"/></dataSource></textItem></contents><style><CSS value="text-align:left;width:3in;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Name</staticValue></dataSource></textItem></contents><style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="name"/></dataSource></textItem></contents><style><CSS value="text-align:left;width:3in;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>Description</staticValue></dataSource></textItem></contents><style><CSS value="text-align:left;font-weight:bold;background-color:#B2CCE5"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="description"/></dataSource></textItem></contents><style><CSS value="text-align:left;width:5in;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn><listColumn><listColumnTitle><contents><textItem><dataSource><staticValue>State</staticValue></dataSource></textItem></contents><style><CSS value="font-weight:bold;background-color:#B2CCE5;text-align:center"/><defaultStyles><defaultStyle refStyle="lt"/></defaultStyles></style></listColumnTitle><listColumnBody><contents><textItem><dataSource><dataItemValue refDataItem="state.state"/></dataSource></textItem></contents><listColumnRowSpan refDataItem="state.state"/><style><CSS value="text-align:center;width:80px;vertical-align:middle"/><defaultStyles><defaultStyle refStyle="lc"/></defaultStyles></style></listColumnBody></listColumn></listColumns><listGroups><listGroup refDataItem="state.state"><sortList><sortItem refDataItem="state.state" sortOrder="ascending"/></sortList></listGroup></listGroups><sortList><sortItem refDataItem="number" sortOrder="ascending"/></sortList></list>
+									</contents>
+									<style>
+										<CSS value="width:50%;padding-top:18px;padding-bottom:20px"/>
+									<defaultStyles><defaultStyle refStyle="rc"/></defaultStyles></style>
+								</repeaterTableCell>
+							<repeaterGroups><repeaterGroup refDataItem="containerName"/><repeaterGroup refDataItem="rlcsPlantsAffected"/></repeaterGroups></repeaterTable>
+						</contents>
+					<style><defaultStyles><defaultStyle refStyle="pb"/></defaultStyles><CSS value="text-align:center"/></style></pageBody>
+					<pageHeader>
+						<contents>
+							<image>
+								<dataSource>
+									<dataItemValue refDataItem="CarrierLogo"/></dataSource>
+								<style><CSS value="vertical-align:text-top;float:left"/></style></image>
+							<block>
+								<contents>
+									
+									<textItem>
+										<dataSource>
+											<staticValue>CMU ECR Meeting Report</staticValue>
+										</dataSource>
+									<style><CSS value="padding-left:1in"/><defaultStyles><defaultStyle refStyle="tt"/></defaultStyles></style></textItem>
+								</contents>
+							<style><CSS value="text-align:center;font-weight:bold;text-decoration:underline;background-color:white"/><defaultStyles><defaultStyle refStyle="ta"/></defaultStyles></style></block>
+						</contents>
+						<style>
+							<CSS value="padding-bottom:10px"/>
+						<defaultStyles><defaultStyle refStyle="ph"/></defaultStyles></style>
+					</pageHeader>
+					<pageFooter>
+						<contents>
+							<table>
+								<tableRows>
+									<tableRow>
+										<tableCells>
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<reportExpression>AsOfDate()</reportExpression>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="vertical-align:top;text-align:left;width:25%"/>
+												</style>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<staticValue>- </staticValue>
+														</dataSource>
+													</textItem>
+													<textItem>
+														<dataSource>
+															<reportExpression>PageNumber()</reportExpression>
+														</dataSource>
+													</textItem>
+													<textItem>
+														<dataSource>
+															<staticValue> -</staticValue>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="vertical-align:top;text-align:center;width:50%"/>
+												</style>
+											</tableCell>
+											<tableCell>
+												<contents>
+													<textItem>
+														<dataSource>
+															<reportExpression>AsOfTime()</reportExpression>
+														</dataSource>
+													</textItem>
+												</contents>
+												<style>
+													<CSS value="vertical-align:top;text-align:right;width:25%"/>
+												</style>
+											</tableCell>
+										</tableCells>
+									</tableRow>
+								</tableRows>
+								<style>
+									<CSS value="border-collapse:collapse;width:100%"/>
+								<defaultStyles><defaultStyle refStyle="tb"/></defaultStyles></style>
+							</table>
+						</contents>
+						<style>
+							<CSS value="padding-top:10px"/>
+						<defaultStyles><defaultStyle refStyle="pf"/></defaultStyles></style>
+					</pageFooter>
+				<style><defaultStyles><defaultStyle refStyle="pg"/></defaultStyles></style></page>
+			</reportPages>
+		<pageSetup orientation="portrait"><namedPaper name="/configuration/pageDefinition[@name='Letter']"/></pageSetup></layout>
+	</layouts>
+<queries><query name="Query1"><source><model/></source><selection autoSummary="false"><dataItem aggregate="none" name="number"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[number]</expression></dataItem><dataItem aggregate="none" name="obid"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[formattedObid]</expression></dataItem><dataItem aggregate="none" name="containerName"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[containerName]</expression></dataItem><dataItem aggregate="none" name="name"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[name]</expression></dataItem><dataItem aggregate="none" name="description"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[description]</expression></dataItem><dataItem aggregate="none" name="state.state"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[state.state]</expression></dataItem><dataItem aggregate="none" name="CarrierLogo"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[CarrierLogo]</expression></dataItem><dataItem aggregate="none" name="ecrURL"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[ecrURL]</expression></dataItem><dataItem aggregate="none" name="iBall"><expression>'&lt;a href="#"&gt;&lt;img src="' || [com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[iBall] ||'" border="0" title="Click here to open the ECR details page." onClick=''javascript:window.open("'||[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[ecrURL]||'")'' /&gt;&lt;/a&gt;'</expression></dataItem><dataItem aggregate="none" name="formattedObid"><expression>'&lt;input type="checkbox" value="' ||
+[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[formattedObid] || '" name="chkoid" /&gt;' </expression></dataItem><dataItem aggregate="none" name="formattedContainerRef"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[formattedContainerRef]</expression></dataItem><dataItem aggregate="none" name="formattedTaskURLInfo"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[formattedTaskURLInfo]</expression></dataItem><dataItem aggregate="none" name="editIcon"><expression>'&lt;a href="#"&gt;&lt;img src="' || [com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[editIcon] ||'" border="0" title="Click here to open the current ECR workflow task." onClick=''javascript:window.open("'||[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[currentTaskUrl]||'")'' /&gt;&lt;/a&gt;'</expression></dataItem><dataItem aggregate="none" name="currentTaskUrl"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[currentTaskUrl]</expression></dataItem><dataItem aggregate="none" name="rlcsPlantsAffected"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[rlcsPlantsAffected]</expression></dataItem><dataItem aggregate="none" name="creatorFullName" rollupAggregate="none"><expression>[com.ptc.windchill.enterprise.report.ReportTask].[CMU_ECR_Meeting_Agenda_Report].[creatorFullName]</expression></dataItem></selection></query></queries><XMLAttributes><XMLAttribute name="RS_CreateExtendedDataItems" output="no" value="false"/><XMLAttribute name="listSeparator" output="no" value=","/></XMLAttributes></report>

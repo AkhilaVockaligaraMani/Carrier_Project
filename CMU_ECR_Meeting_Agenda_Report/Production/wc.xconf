@@ -1,0 +1,14 @@
+<!--========================================================================-->
+<!-- CMU  E C R  M E E T I N G  A G E N D A   Report Entries Start Here -->
+<!--========================================================================-->
+<Property name="ext.carrier.wc.cognos.reports.CMUecrMtgReport.CONTAINERS" default="Split and Fan Coils|SRT"  targetFile="codebase/ext/carrier/wc/cognos/reports/CognosReport.properties" />
+
+<Property name="type" default="report" targetFile="loadFiles/ext/carrier/wc/cognos/reports/CMUECRMtgReport.properties" />
+
+<Property name="defaultName" default="CMU ECR Meeting Report" targetFile="loadFiles/ext/carrier/wc/cognos/reports/CMUECRMtgReport.properties" />
+
+<Property name="defaultDescription" default="CMU ECR Meeting Report" targetFile="loadFiles/ext/carrier/wc/cognos/reports/CMUECRMtgReport.properties" />
+
+<!--========================================================================-->
+<!-- CMU  E C R  M E E T I N G  A G E N D A   Report Entries End Here   -->
+<!--========================================================================-->
